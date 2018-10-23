@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AcceptsFiles</key>
+	<false/>
+	<key>AcceptsText</key>
+	<true/>
+	<key>Authentication</key>
+	<false/>
+	<key>Author</key>
+	<string>Sveinbjorn Thordarson</string>
+	<key>BundledFiles</key>
+	<array/>
+	<key>Creator</key>
+	<string>Platypus-5.2</string>
+	<key>DeclareService</key>
+	<true/>
+	<key>DevelopmentVersion</key>
+	<false/>
+	<key>DocIconPath</key>
+	<string></string>
+	<key>Droppable</key>
+	<false/>
+	<key>Example</key>
+	<true/>
+	<key>IconPath</key>
+	<string></string>
+	<key>Identifier</key>
+	<string>org.sveinbjorn.SayURLSchemeHandler</string>
+	<key>InterfaceType</key>
+	<string>None</string>
+	<key>InterpreterArgs</key>
+	<array/>
+	<key>InterpreterPath</key>
+	<string>/usr/bin/python</string>
+	<key>Name</key>
+	<string>SayURLSchemeHandler</string>
+	<key>OptimizeApplication</key>
+	<true/>
+	<key>Overwrite</key>
+	<false/>
+	<key>PromptForFileOnLaunch</key>
+	<false/>
+	<key>RemainRunning</key>
+	<false/>
+	<key>ScriptArgs</key>
+	<array/>
+	<key>Script</key>
+	<string>#!/usr/bin/python
+
+from subprocess import call
+import sys
+
+text = sys.argv[1]
+text = text[6:]
+text = text.replace(&apos;-&apos;, &apos; &apos;)
+if len(text):
+    call([&quot;/usr/bin/say&quot;, text])
+	</string>
+	<key>ScriptName</key>
+	<string>SayURLSchemeHandler</string>
+	<key>RunInBackground</key>
+	<false/>
+	<key>StatusItemDisplayType</key>
+	<string>Text</string>
+	<key>StatusItemIcon</key>
+	<data></data>
+	<key>StatusItemIconIsTemplate</key>
+	<false/>
+	<key>StatusItemTitle</key>
+	<string>Title</string>
+	<key>StatusItemUseSystemFont</key>
+	<true/>
+	<key>Suffixes</key>
+	<array/>
+	<key>TextBackground</key>
+	<string>#ffffff</string>
+	<key>TextFont</key>
+	<string>Monaco</string>
+	<key>TextForeground</key>
+	<string>#000000</string>
+	<key>TextSize</key>
+	<real>13</real>
+	<key>URISchemes</key>
+	<array>
+		<string>say</string>
+	</array>
+	<key>UniformTypes</key>
+	<array/>
+	<key>UseXMLPlistFormat</key>
+	<false/>
+	<key>Version</key>
+	<string>1.0</string>
+</dict>
+</plist>

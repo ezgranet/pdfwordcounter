@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Authentication</key>
+	<false/>
+	<key>AcceptsFiles</key>
+	<true/>
+	<key>AcceptsText</key>
+	<false/>
+	<key>Author</key>
+	<string>Sveinbjorn Thordarson</string>
+	<key>BundledFiles</key>
+	<array/>
+	<key>Creator</key>
+	<string>Platypus-5.2</string>
+	<key>Overwrite</key>
+	<false/>
+	<key>DevelopmentVersion</key>
+	<false/>
+	<key>Example</key>
+	<true/>
+	<key>ScriptName</key>
+	<string>SpotlightInfo.sh</string>
+	<key>Script</key>
+	<string>#!/usr/bin/perl 
+# Uses the mdls command to list meta data info on dropped files
+
+foreach(@ARGV)
+{
+    print &quot;META-DATA INFO FOR &apos;$_&apos;:\n&quot;;
+    system(&quot;/usr/bin/mdls &apos;$_&apos;&quot;);
+    print &quot;------------||------------\n\n&quot;;
+}
+    </string>
+	<key>DocIconPath</key>
+	<string></string>
+	<key>Droppable</key>
+	<true/>
+	<key>IconPath</key>
+	<string></string>
+	<key>Identifier</key>
+	<string>org.sveinbjorn.SpotlightInfo</string>
+	<key>InterpreterPath</key>
+	<string>/usr/bin/perl</string>
+	<key>Name</key>
+	<string>SpotlightInfo</string>
+	<key>OptimizeApplication</key>
+	<false/>
+	<key>InterfaceType</key>
+	<string>Text Window</string>
+	<key>InterpreterArgs</key>
+	<array/>
+	<key>RemainRunning</key>
+	<true/>
+	<key>RunInBackground</key>
+	<false/>
+	<key>StatusItemDisplayType</key>
+	<string>Text</string>
+	<key>StatusItemIcon</key>
+	<data></data>
+	<key>StatusItemTitle</key>
+	<string>MyApp</string>
+	<key>Suffixes</key>
+	<array>
+		<string>*</string>
+	</array>
+	<key>TextBackground</key>
+	<string>#ffffff</string>
+	<key>TextFont</key>
+	<string>Monaco</string>
+	<key>TextForeground</key>
+	<string>#000000</string>
+	<key>TextSize</key>
+	<real>10</real>
+	<key>Version</key>
+	<string>1.0</string>
+</dict>
+</plist>
