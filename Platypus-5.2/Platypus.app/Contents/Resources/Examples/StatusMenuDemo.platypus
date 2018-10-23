@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Authentication</key>
+	<false/>
+	<key>Author</key>
+	<string>Sveinbjorn Thordarson</string>
+	<key>BundledFiles</key>
+	<array/>
+	<key>Creator</key>
+	<string>Platypus-5.2</string>
+	<key>Overwrite</key>
+	<false/>
+	<key>DevelopmentVersion</key>
+	<false/>
+	<key>Example</key>
+	<true/>
+	<key>ScriptName</key>
+	<string>StatusMenuDemo.pl</string>
+	<key>Script</key>
+	<string>#!/usr/bin/perl
+print &quot;MENUITEMICON|appIcon.icns|Menu item icon can be a bundled image\n&quot;;
+print &quot;MENUITEMICON|/Library/Application Support/Apple/iChat Icons/Flags/Iceland.png|Or an image on the file system\n&quot;;
+print &quot;MENUITEMICON|http://sveinbjorn.org/images/andlat.png|Or even a URL!\n&quot;;
+print &quot;SUBMENU|Submenu|Item 1|Item 2|Item 3\n&quot;;
+</string>
+	<key>DocIconPath</key>
+	<string></string>
+	<key>Droppable</key>
+	<false/>
+	<key>IconPath</key>
+	<string></string>
+	<key>Identifier</key>
+	<string>org.sveinbjorn.StatusMenuDemo</string>
+	<key>InterpreterPath</key>
+	<string>/usr/bin/perl</string>
+	<key>Name</key>
+	<string>StatusMenuDemo</string>
+	<key>OptimizeApplication</key>
+	<false/>
+	<key>InterfaceType</key>
+	<string>Status Menu</string>
+	<key>InterpretarArgs</key>
+	<array/>
+	<key>RemainRunning</key>
+	<true/>
+	<key>RunInBackground</key>
+	<false/>
+	<key>StatusItemDisplayType</key>
+	<string>Text</string>
+	<key>StatusItemIcon</key>
+	<data></data>
+	<key>StatusItemUseSystemFont</key>
+	<true/>
+	<key>StatusItemTitle</key>
+	<string>IconDemo</string>
+	<key>Suffixes</key>
+	<array/>
+	<key>TextBackground</key>
+	<string>#ffffff</string>
+	<key>TextFont</key>
+	<string>Monaco</string>
+	<key>TextForeground</key>
+	<string>#000000</string>
+	<key>TextSize</key>
+	<real>10</real>
+	<key>Version</key>
+	<string>1.0</string>
+</dict>
+</plist>
