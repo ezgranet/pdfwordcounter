@@ -1,2 +1,7 @@
 #!/bin/bash
-poppler/0.70.1/bin/pdftotext "$1" - | wc -w 
+if [ $# -eq 0 ]
+  then
+    echo "Either drag a PDF to the window, or click File-> Open"
+else
+		popple/71/bin/pdftotext "$1" - | wc -w 
+fi
