@@ -1,3 +1,513 @@
+commit c0c89223c1724815e8bae78ebac72bb3a4873a68
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 7 19:34:31 2019 +0100
+
+    0.74.0
+
+ CMakeLists.txt         |  4 ++--
+ NEWS                   | 26 ++++++++++++++++++++++++++
+ cpp/CMakeLists.txt     |  2 +-
+ cpp/Doxyfile           |  2 +-
+ qt5/src/CMakeLists.txt |  2 +-
+ qt5/src/Doxyfile       |  2 +-
+ 6 files changed, 32 insertions(+), 6 deletions(-)
+
+commit 2c5fadd7e1c1b896ee23a3ba694f5f19430b6720
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 6 19:45:09 2019 +0100
+
+    Update (C) of last commit
+
+ poppler/CairoOutputDev.cc  | 2 +-
+ poppler/CairoRescaleBox.cc | 1 +
+ qt5/src/ArthurOutputDev.cc | 2 +-
+ utils/ImageOutputDev.cc    | 2 +-
+ utils/pdftocairo.cc        | 2 +-
+ 5 files changed, 5 insertions(+), 4 deletions(-)
+
+commit 5a72f3cd65d4c9481b0b5b2535e51057c7b9b291
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 6 18:31:55 2019 +0100
+
+    Use reinterpret_cast to silence cast-align warnings
+
+    In ImageOutputDev it comes directly from malloc, and malloc guarantees
+    alignment for basic types, so we're good
+
+    In ArthurOutputDev it comes from QImage::bits that uses malloc
+    internally, so we're good
+
+    In cairo* it comes from cairo_image_surface_get_data that comes from
+    pixman_image_get_data that returns a uint32_t * so we're only going to
+    the original type alignment
+
+ .gitlab-ci.yml             | 2 +-
+ poppler/CairoOutputDev.cc  | 8 ++++----
+ poppler/CairoRescaleBox.cc | 2 +-
+ qt5/src/ArthurOutputDev.cc | 6 +++---
+ utils/ImageOutputDev.cc    | 2 +-
+ utils/pdftocairo.cc        | 2 +-
+ 6 files changed, 11 insertions(+), 11 deletions(-)
+
+commit ff1ab1b0c9b265df1fd07380cd78ca0daa63d642
+Author: Vincent Le Garrec <legarrec.vincent@gmail.com>
+Date:   Sat Feb 2 04:25:52 2019 +0100
+
+    Undefined-shift in StreamPredictor::getNextLine
+
+    oss-fuzz/10284
+
+ poppler/Stream.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 5d2ef36e11a63d06c05fa6d314cd7571262d6e4e
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Mon Feb 4 22:30:54 2019 +0100
+
+    Update (C)
+
+ poppler/XRef.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8446948decde451b4be5f869e98884233e43588c
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 3 14:25:18 2019 +0100
+
+    SplashXPath: Handle overflow of adjusts gracefully
+
+    oss-fuzz/12638
+
+ splash/SplashXPath.cc | 120
+ +++++++++++++++++++++++++-------------------------
+ 1 file changed, 61 insertions(+), 59 deletions(-)
+
+commit 5417b8c364fb5f71176f1a22554ac98b20a58815
+Author: Vincent Le Garrec <legarrec.vincent@gmail.com>
+Date:   Sat Feb 2 05:00:49 2019 +0100
+
+    Integer-overflow in FoFiBase::checkRegion
+
+    oss-fuzz/8612
+
+ fofi/FoFiBase.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 0d4103767f99aebbf7c84165f834fd0e2b5c3054
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 3 00:43:41 2019 +0100
+
+    Gfx8BitFont: Make multiple code variables instead of one
+
+    Makes for easier understanding/scoping of its value
+
+ poppler/GfxFont.cc | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
+commit 308b7ca12352b741c4f11b4b7685ef71fa66d50a
+Author: Vincent Le Garrec <legarrec.vincent@gmail.com>
+Date:   Sat Feb 2 04:40:08 2019 +0100
+
+    Integer-overflow in Gfx8BitFont::Gfx8BitFont
+
+    oss-fuzz/8715
+
+ poppler/GfxFont.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit b54e1fc3e0d2600621a28d50f9f085b9e38619c2
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Fri Feb 1 08:42:27 2019 +0100
+
+    Also defend against requests for negative XRef indices. oss-fuzz/12797
+
+ poppler/XRef.cc | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit 3cc40be2c545b833d518994d9e459376e6858cb1
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Mon Jan 28 22:02:52 2019 +0100
+
+    JBIG2Stream: Free huffTab if buildTable fails
+
+ poppler/JBIG2Stream.cc | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 181db8ab737c2fbf73b1706879d00d97a72426d3
+Author: LE GARREC Vincent <gitlab-freedesktop@le-garrec.fr>
+Date:   Sun Jan 27 16:43:15 2019 +0000
+
+    ofz-8467: Undefined-shift in CMap::addCIDs
+
+ poppler/CMap.cc | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit c3577325de5b9d59539c2413dcc66283df062ffa
+Author: LE GARREC Vincent <gitlab-freedesktop@le-garrec.fr>
+Date:   Sun Jan 27 10:19:10 2019 +0000
+
+    ofz-8725: Undefined-shift in JBIG2HuffmanDecoder::buildTable
+
+ poppler/JBIG2Stream.cc | 41 +++++++++++++++++++++++++++++------------
+ 1 file changed, 29 insertions(+), 12 deletions(-)
+
+commit a73c80e024e8b2a9613926793165da07017dfbb2
+Author: Vincent Le Garrec <legarrec.vincent@gmail.com>
+Date:   Sat Jan 26 09:05:14 2019 +0100
+
+    ofz-8516: Undefined-shift in StreamBitReader::readBits
+
+    https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=8516
+
+ poppler/Hints.cc | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+commit ef64a69b84ad066559a0f25d5c5af96af38b9dd1
+Author: Vincent Le Garrec <legarrec.vincent@gmail.com>
+Date:   Sat Jan 26 09:53:38 2019 +0100
+
+    ofz-8798: Undefined-shift in JBIG2MMRDecoder::get2DCode
+
+    https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=8798
+
+ poppler/JBIG2Stream.cc | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+commit 6f5327114c824791dda72dc415b047d445e46d9d
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Jan 25 16:10:08 2019 +0100
+
+    glib: Fix cast from 'GTime *' (aka 'int *') to 'time_t *' (aka
+    'long *')
+
+    Sounds rather scary since we're storing a bigger value than what
+    really
+    fits.
+
+    Fixed by the suggestion of
+    https://developer.gnome.org/glib/stable/glib-Date-and-Time-Functions.html#GTime
+
+    Changing the type of _PopplerAttachment ctime/mtime would change the
+    structure size, thus break the BC, so leaving that for the future for
+    now
+
+ glib/poppler-attachment.cc | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+commit f2493d53a70e10ea69bd147c48be7c8544979436
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Jan 25 19:49:54 2019 +0100
+
+    SampledFunction: Fix uninitialized memory read
+
+    oss-fuzz/12608
+
+ poppler/Function.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a6427ea6df68eb20e1970ddaf4017ba9a04e737a
+Author: Vincent Le Garrec <legarrec.vincent@gmail.com>
+Date:   Fri Jan 25 07:37:46 2019 +0100
+
+    Fix ofz-8438
+
+    https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=8438
+
+ poppler/GfxState.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 7486e4995d66f1a8676f3e65e408e8cdab049f6b
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Jan 16 22:56:42 2019 +0100
+
+    pdfsig: add -nssdir option
+
+    Contains code inspired in code by Hans-Ulrich Jüttner and Adrian
+    Johnson
+
+ poppler/SignatureHandler.cc | 56
+ ++++++++++++++++++++++++++++++---------------
+ poppler/SignatureHandler.h  |  9 +++++---
+ poppler/SignatureInfo.cc    |  4 ++--
+ utils/pdfsig.1              | 15 ++++++++++--
+ utils/pdfsig.cc             | 12 +++++++---
+ 5 files changed, 68 insertions(+), 28 deletions(-)
+
+commit 8076bc66c3bd6897d142fba7e7740ab9baf0cb37
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sat Jan 19 21:34:23 2019 +0100
+
+    Fix link in FreeBSD
+
+ .gitlab-ci.yml               | 3 +--
+ CMakeLists.txt               | 6 +++++-
+ cmake/modules/FindGLIB.cmake | 6 +++++-
+ cmake/modules/FindNSS3.cmake | 6 +++++-
+ glib/CMakeLists.txt          | 6 +++++-
+ 5 files changed, 21 insertions(+), 6 deletions(-)
+
+commit 900d02b0cba78e23d80869b89c07db81b63bbcf4
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sat Jan 19 01:20:07 2019 +0100
+
+    Update (C)
+
+ goo/gdir.h                   | 1 +
+ poppler/Function.cc          | 2 +-
+ poppler/SplashOutputDev.cc   | 1 +
+ poppler/Stream.cc            | 1 +
+ splash/SplashFTFontEngine.cc | 1 +
+ splash/SplashFontEngine.cc   | 1 +
+ splash/SplashFontFile.cc     | 1 +
+ utils/pdfinfo.cc             | 1 +
+ 8 files changed, 8 insertions(+), 1 deletion(-)
+
+commit 98f7cf7cf126a1d28797b4ce9095aefe9656e954
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Jan 18 17:18:39 2019 +0100
+
+    Fix e[0] gcc warning
+
+ poppler/Function.cc | 27 ++++++++++++++-------------
+ 1 file changed, 14 insertions(+), 13 deletions(-)
+
+commit 748b4e58e384b806618fae2014b6e413a4168fed
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Fri Jan 4 22:13:43 2019 +0100
+
+    all: Remove support for obsolete systems
+
+    https://gitlab.freedesktop.org/poppler/poppler/issues/709
+
+ goo/gdir.h                   |   5 --
+ goo/gfile.cc                 | 182
+ +++----------------------------------------
+ goo/gfile.h                  |   7 +-
+ poppler/GlobalParams.cc      |   2 -
+ poppler/PSOutputDev.cc       |   8 --
+ poppler/SplashOutputDev.cc   |   6 --
+ poppler/Stream.cc            |   8 --
+ poppler/TextOutputDev.cc     |   8 --
+ splash/SplashFTFontEngine.cc |   6 --
+ splash/SplashFontEngine.cc   |  12 ---
+ splash/SplashFontFile.cc     |   6 --
+ utils/pdfinfo.cc             |   4 -
+ 12 files changed, 10 insertions(+), 244 deletions(-)
+
+commit 9f247fbb14df853274423035530a141405c90cda
+Author: Volker Krause <vkrause@kde.org>
+Date:   Wed Jan 16 20:17:12 2019 +0100
+
+    Remove unused MacroPushRequiredVars.cmake
+
+    This is nowadays also provided by CMake itself via
+    CMakePushCheckState.
+
+ cmake/modules/MacroPushRequiredVars.cmake | 47
+ -------------------------------
+ 1 file changed, 47 deletions(-)
+
+commit eae71a6b497f0bbafeaf3d8a09dc735e591cdf10
+Author: Masamichi Hosoda <trueroad@trueroad.jp>
+Date:   Sat Jan 12 21:55:17 2019 +0900
+
+    cpp: Add named destination for poppler-dump
+
+ cpp/tests/poppler-dump.cpp | 97
+ ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 97 insertions(+)
+
+commit ec67506c3d0b1c519bb3e2f0bee90fac328e7ddb
+Author: Masamichi Hosoda <trueroad@trueroad.jp>
+Date:   Sat Jan 12 18:44:42 2019 +0900
+
+    cpp: Add document::create_destination_map()
+
+    Creates a map of all the named destinations in the document.
+
+ cpp/poppler-document.cpp | 56
+ ++++++++++++++++++++++++++++++++++++++++++++++++
+ cpp/poppler-document.h   |  8 +++++++
+ 2 files changed, 64 insertions(+)
+
+commit dbed0702722336baf3ed9fc0e780e14fcdec6f3b
+Author: Masamichi Hosoda <trueroad@trueroad.jp>
+Date:   Sat Jan 12 16:08:44 2019 +0900
+
+    cpp: Add destination class
+
+    The information about a destination used in a PDF document.
+
+ cpp/CMakeLists.txt                |   2 +
+ cpp/poppler-destination-private.h |  55 ++++++++
+ cpp/poppler-destination.cpp       | 285
+ ++++++++++++++++++++++++++++++++++++++
+ cpp/poppler-destination.h         |  68 +++++++++
+ 4 files changed, 410 insertions(+)
+
+commit 842a75d8d6cc0105da6c0b5dbb0997b79ba63246
+Author: Volker Krause <vkrause@kde.org>
+Date:   Tue Jan 15 19:50:39 2019 +0100
+
+    Fix fseeko configure check on Android for API level < 24
+
+    The availability depends on the _FILE_OFFSET_BITS define, which is set
+    in config.h. So we need to have this during the configure check
+    as well,
+    to test under the same conditions.
+
+ ConfigureChecks.cmake | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+commit 8984a7103abadd1bbc8c0a7ae093611509874d73
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Jan 11 21:02:43 2019 +0100
+
+    Update (C) of last commits
+
+ poppler/Form.cc            | 2 +-
+ poppler/SignatureHandler.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit b82b77b06f97e960c0f35bfc21b61e61109e1a6f
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Jan 11 11:10:49 2019 +0100
+
+    Make validateSignature return a SignatureValidationStatus
+
+ poppler/Form.cc             |  7 +++---
+ poppler/SignatureHandler.cc | 55
+ ++++++++++++++++++++++-----------------------
+ poppler/SignatureHandler.h  |  5 +----
+ 3 files changed, 31 insertions(+), 36 deletions(-)
+
+commit 01ccc50e5e7407bed8a0b65aeb4b72b038c6ec07
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Jan 11 11:05:52 2019 +0100
+
+    Merge NSS_CertTranslate into validateCertificate
+
+ poppler/Form.cc             |  5 ++---
+ poppler/SignatureHandler.cc | 51
+ +++++++++++++++++++--------------------------
+ poppler/SignatureHandler.h  |  3 +--
+ 3 files changed, 24 insertions(+), 35 deletions(-)
+
+commit fbb6509c05bad7e6bfeba8b4bb2cdc4a0e2d297f
+Author: Adrian Johnson <ajohnson@redneon.com>
+Date:   Sun Nov 25 22:12:12 2018 +0100
+
+    Include timezone in timeToDateString()
+
+ poppler/DateInfo.cc | 61
+ +++++++++++++++++++++--------------------------------
+ poppler/DateInfo.h  |  1 +
+ 2 files changed, 25 insertions(+), 37 deletions(-)
+
+commit 8da4d536cc2b982365483ee873f859b346efeff0
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Jan 9 09:58:43 2019 +0100
+
+    qt5: demo: Actually use the lazy toc model lazyly
+
+ qt5/demos/toc.cpp | 145
+ ++++++++++++++++++++++++++++++++++++++++++++----------
+ qt5/demos/toc.h   |   6 ++-
+ 2 files changed, 124 insertions(+), 27 deletions(-)
+
+commit c8e6e73a28f6d66e6babedf9cc8da4f10b9e5ffe
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Jan 9 20:07:10 2019 +0100
+
+    Update (C) of previous commits
+
+ qt5/demos/toc.cpp                 | 1 +
+ qt5/src/poppler-outline-private.h | 2 ++
+ qt5/src/poppler-outline.cc        | 2 ++
+ qt5/src/poppler-qt5.h             | 2 +-
+ 4 files changed, 6 insertions(+), 1 deletion(-)
+
+commit 9b9795e935867f4bc35c4fdb2979dda8c92f6292
+Author: Albert Astals Cid <tsdgeos@yahoo.es>
+Date:   Wed Jan 9 10:20:15 2019 +0000
+
+    Update since to 0.74
+
+ qt5/src/poppler-qt5.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 3cb662cd84520bb669692bfba0560a1ffd233920
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Fri Dec 7 09:38:59 2018 +0100
+
+    Add a method the check if an outline item has children to avoid
+    having to eagerly expand the hierarchy anyway.
+
+ qt5/src/poppler-outline.cc  | 11 +++++++++++
+ qt5/src/poppler-qt5.h       |  7 +++++++
+ qt5/tests/check_outline.cpp |  2 ++
+ 3 files changed, 20 insertions(+)
+
+commit 3376db5e5b2588c5b4d0df74b5c9a3230ffbc78d
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Sat Nov 24 18:55:26 2018 +0100
+
+    Port the Qt5 viewer demo to use the lazy outline item API (even if
+    for loading all items up front for now).
+
+ qt5/demos/toc.cpp | 27 +++++++++++++--------------
+ 1 file changed, 13 insertions(+), 14 deletions(-)
+
+commit a2e42c88cee27497517bbab098a917bfd80d26f7
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Sat Nov 24 18:55:01 2018 +0100
+
+    Add missing doc comments for the lazy outline item API of the Qt5
+    frontend.
+
+ qt5/src/poppler-qt5.h | 46 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
+
+commit c0fc05ed1113383bcbb55272bd64e1842490e2a1
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Wed Oct 31 21:19:55 2018 +0100
+
+    Remove the intermediate Outline type since all items are owned by the
+    document and the top-level items will always be eagerly loaded anyway.
+
+ qt5/src/poppler-document.cc       | 16 +++++++++++-----
+ qt5/src/poppler-outline-private.h |  7 -------
+ qt5/src/poppler-outline.cc        | 23 -----------------------
+ qt5/src/poppler-qt5.h             | 19 ++-----------------
+ qt5/tests/check_outline.cpp       | 13 ++++---------
+ 5 files changed, 17 insertions(+), 61 deletions(-)
+
+commit 13b5eae9f785a70bc6b9af8e773a555665a1b39c
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Wed Oct 31 19:03:57 2018 +0100
+
+    Add Qt5 API that lazily builds an outline by wrapping the internal
+    objects.
+
+ qt5/src/CMakeLists.txt            |   1 +
+ qt5/src/poppler-document.cc       |  12 ++-
+ qt5/src/poppler-outline-private.h |  52 +++++++++++
+ qt5/src/poppler-outline.cc        | 189
+ ++++++++++++++++++++++++++++++++++++++
+ qt5/src/poppler-private.cc        |   2 +-
+ qt5/src/poppler-qt5.h             |  50 ++++++++++
+ qt5/tests/CMakeLists.txt          |   1 +
+ qt5/tests/check_outline.cpp       |  55 +++++++++++
+ 8 files changed, 360 insertions(+), 2 deletions(-)
+
+commit 29fa0f234ff1094c8e9f7a09ca31262e28df40a4
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Mon Jan 7 23:26:56 2019 +0100
+
+    glib: docs: Add API index for 0.73
+
+ glib/reference/poppler-docs.sgml | 4 ++++
+ 1 file changed, 4 insertions(+)
+
 commit 67e46f6e1339f830f9f8b6fd27e38708b4cf4b0e
 Author: Albert Astals Cid <aacid@kde.org>
 Date:   Mon Jan 7 22:15:12 2019 +0100

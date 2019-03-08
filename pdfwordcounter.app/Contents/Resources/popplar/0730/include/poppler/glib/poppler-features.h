@@ -55,7 +55,7 @@
  *
  * Since: 0.12
  */
-#define POPPLER_MINOR_VERSION (73)
+#define POPPLER_MINOR_VERSION (74)
 
 /**
  * POPPLER_MICRO_VERSION:

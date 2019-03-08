@@ -1,0 +1,12 @@
+prefix=/usr/local/Cellar/poppler/0.74.0
+libdir=/usr/local/Cellar/poppler/0.74.0/lib
+includedir=/usr/local/Cellar/poppler/0.74.0/include
+
+Name: poppler-qt5
+Description: Qt5 bindings for poppler
+Version: 0.74.0
+Requires: 
+Requires.private: poppler = 0.74.0
+
+Libs: -L${libdir} -lpoppler-qt5
+Cflags: -I${includedir}/poppler/qt5

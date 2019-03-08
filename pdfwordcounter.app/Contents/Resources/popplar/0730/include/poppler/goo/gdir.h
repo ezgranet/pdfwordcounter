@@ -25,6 +25,7 @@
 // Copyright (C) 2017 Christoph Cullmann <cullmann@kde.org>
 // Copyright (C) 2017 Thomas Freitag <Thomas.Freitag@alfa.de>
 // Copyright (C) 2018 Mojca Miklavec <mojca@macports.org>
+// Copyright (C) 2019 Christian Persch <chpe@src.gnome.org>
 //
 // To see a description of the changes please see the Changelog file that
 // came with your tarball or type make ChangeLog if you are building from git
@@ -77,13 +78,8 @@ private:
 #if defined(_WIN32)
   WIN32_FIND_DATAA ffd;
   HANDLE hnd;
-#elif defined(ACORN)
-#elif defined(MACOS)
 #else
   DIR *dir;			// the DIR structure from opendir()
-#ifdef VMS
-  bool needParent;		// need to return an entry for [-]
-#endif
 #endif
 };
 

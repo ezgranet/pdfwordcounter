@@ -34,7 +34,7 @@
 
 /* Defines the poppler version. */
 #ifndef POPPLER_VERSION
-#define POPPLER_VERSION "0.73.0"
+#define POPPLER_VERSION "0.74.0"
 #endif
 
 /* Use fixedpoint. */
