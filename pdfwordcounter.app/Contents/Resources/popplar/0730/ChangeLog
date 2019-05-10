@@ -1,3 +1,1939 @@
+commit 248540fbe44886f7ede290c216822df21ad06d7d
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed May 1 00:05:14 2019 +0200
+
+    Poppler 0.76.1
+
+ CMakeLists.txt   |  2 +-
+ NEWS             | 12 ++++++++++++
+ cpp/Doxyfile     |  2 +-
+ qt5/src/Doxyfile |  2 +-
+ 4 files changed, 15 insertions(+), 3 deletions(-)
+
+commit fe744fedb2757c6a6b69a5a7a30cab8b7e448cc5
+Author: Oliver Sander <oliver.sander@tu-dresden.de>
+Date:   Tue Apr 30 12:36:37 2019 +0200
+
+    Fix some typos in build system output and comments
+
+ CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 0d0630cd6f10d0586172b740290056620fe56b21
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Apr 28 19:25:08 2019 +0200
+
+    qt5: Fix regression in annotation handling
+
+ qt5/src/poppler-annotation.cc   |  2 +-
+ qt5/tests/check_annotations.cpp | 18 ++++++++++++++++++
+ 2 files changed, 19 insertions(+), 1 deletion(-)
+
+commit b49d16a47388e03aa1a56ba64a47751aa993e06a
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Apr 25 22:31:33 2019 +0200
+
+    Update (C) of two previous commits
+
+ poppler/Decrypt.cc | 2 +-
+ poppler/Gfx.cc     | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+commit e0ef346c0f669140076c4cf443f07ea0770996da
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Sep 21 00:32:24 2018 +0200
+
+    Make the mul tables be calculated at compile time with constexpr
+
+ poppler/Decrypt.cc | 134
+ +++++++++++++++++++++++++++++++++++++++--------------
+ 1 file changed, 99 insertions(+), 35 deletions(-)
+
+commit 9186cf25d03cd680381dde9766e12310269bbf69
+Author: Oliver Sander <oliver.sander@tu-dresden.de>
+Date:   Thu Apr 25 21:27:04 2019 +0200
+
+    Fix a typo in an error message
+
+ poppler/Gfx.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 62f945272dd9c4d8c8febb13b38fb7c5c331c1f4
+Author: William Bader <william@newspapersystems.com>
+Date:   Tue Apr 23 00:57:18 2019 +0200
+
+    Handle splashModeDeviceN8 in two switch
+
+ poppler/SplashOutputDev.cc | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+commit 3b40194971cb3fcfc63fc238ebab81a1d54fa1e9
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Mon Apr 22 13:05:08 2019 +0200
+
+    Remove unused functions
+
+ poppler/SplashOutputDev.cc | 48
+ ----------------------------------------------
+ 1 file changed, 48 deletions(-)
+
+commit 16f34af3cda7f8e5647c50027ed032952d9afe0e
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Mon Apr 22 12:58:35 2019 +0200
+
+    NULL -> nullptr
+
+ poppler/SplashOutputDev.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 310fd7c1465be424126bd8f3d853036178df72b9
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Mon Apr 22 12:28:07 2019 +0200
+
+    Add SPLASH_CMYK=ON to the clazy CI
+
+    to have more coverage, this doesn't really reduce the coverage for the
+    "normal" case of not having SPLASH_CMYK defined since there's very few
+    else for that ifdef and they're just simplifications of the if code
+
+ .gitlab-ci.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 97781707843016291827796a5bc96340c40cc4e5
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Mon Apr 22 12:35:41 2019 +0200
+
+    Add (C) for previous commit
+
+ splash/SplashBitmap.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 28d9bcf831ce994a02ee0f92278c614fa31c5d99
+Author: William Bader <william@newspapersystems.com>
+Date:   Mon Apr 22 12:24:03 2019 +0200
+
+    Fix compile with SPLASH_CMYK enabled
+
+ splash/SplashBitmap.cc | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+commit e0eb356d85e2b43751af6ea7ccd753833f8f967c
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Apr 21 11:46:39 2019 +0200
+
+    poppler 0.76.0
+
+ CMakeLists.txt   |  4 ++--
+ NEWS             | 18 ++++++++++++++++++
+ cpp/Doxyfile     |  2 +-
+ qt5/src/Doxyfile |  2 +-
+ 4 files changed, 22 insertions(+), 4 deletions(-)
+
+commit 97bbfd67d7fa4d633e10e3dc90fd523051607836
+Author: LE GARREC Vincent <gitlab-freedesktop@le-garrec.fr>
+Date:   Wed Apr 17 10:59:34 2019 +0000
+
+    ofz-11248: Use-of-uninitialized-value in Parser::makeStream
+
+ poppler/Hints.cc | 10 ++++++----
+ poppler/XRef.cc  |  4 +++-
+ 2 files changed, 9 insertions(+), 5 deletions(-)
+
+commit d1223ff2890a028834d1bdccb8984dc58575eda1
+Author: LE GARREC Vincent <gitlab-freedesktop@le-garrec.fr>
+Date:   Wed Apr 17 08:17:47 2019 +0000
+
+    ofz-8552: Overflow JBIG2Stream::readTextRegion
+
+    And fix endless loop.
+
+ poppler/JBIG2Stream.cc | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+commit 1a950e45cde918513846d8a13022403b859a482e
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sat Apr 13 23:43:59 2019 +0200
+
+    Small improvements to README.contributors
+
+ README.contributors | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit e1e15db0a4d0a5b051efc9947d5ac79184447b9b
+Author: himajin100000 <himajin100000@gmail.com>
+Date:   Mon Apr 8 21:14:59 2019 +0900
+
+    avoid more C4310
+
+ fofi/FoFiType1C.cc | 9 +++++----
+ poppler/Form.cc    | 5 +++--
+ 2 files changed, 8 insertions(+), 6 deletions(-)
+
+commit 1fbbb3e499873e92d775cac9cc285b3c362e5db7
+Author: himajin100000 <himajin100000@gmail.com>
+Date:   Sun Apr 7 21:43:55 2019 +0900
+
+    avoid warning C4310: cast truncates constant value
+
+ goo/GooString.h | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+commit 4ae6786469ec0268307fa05cb6d9ce58b4541941
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Mon Apr 8 00:56:12 2019 +0200
+
+    Update (C) of previous commit
+
+ poppler/FontInfo.cc | 2 +-
+ poppler/FontInfo.h  | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+commit 0ec33438f4a407c122c9bfc4dc34758203b50e8a
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Sun Apr 7 20:48:30 2019 +0200
+
+    Avoid duplicate set look-up and ordering overhead when tracking
+    visited fonts and objects in FontScanner.
+
+ poppler/FontInfo.cc | 15 +++++----------
+ poppler/FontInfo.h  |  6 ++++--
+ 2 files changed, 9 insertions(+), 12 deletions(-)
+
+commit ba40d76a5555fe78f3a0dab91d0590f452f2ee3e
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Apr 5 17:17:52 2019 +0200
+
+    FormField::FormField: Only call Array::get once
+
+ poppler/Form.cc | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+commit 70845beb5ed8c9b20f3ff1b5054c58b35ebe4872
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Apr 5 16:46:29 2019 +0200
+
+    Introduce Dict::getVal(int i, Ref *returnRef)
+
+    And use it in FontInfoScanner::scanFonts
+
+ poppler/Dict.cc     | 11 +++++++++++
+ poppler/Dict.h      |  2 ++
+ poppler/FontInfo.cc | 11 +++++------
+ 3 files changed, 18 insertions(+), 6 deletions(-)
+
+commit 8051f678b3b43326e5fdfd7c03f39de21059f426
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Apr 5 16:34:48 2019 +0200
+
+    FontInfoScanner::scanFonts Fix infinite loop in broken files
+
+    Fixes #752
+
+ poppler/FontInfo.cc | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+commit 0a1c6c41cf27bbfa2e19fe0b3c48eeb919f8e322
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Apr 5 16:30:01 2019 +0200
+
+    Rename resObj to dictObjI since that makes much more sense
+
+    And we already have a resObj down the function that is the Resources
+    object so that should be actually called resObj
+
+ poppler/FontInfo.cc | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit ea34108538742ebddf95052319d2f3cbd29b5986
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Apr 5 16:06:22 2019 +0200
+
+    Update (C) of previous commit
+
+ qt5/src/poppler-annotation-private.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 3fe46034a9621b2769d20a15a662334e4270d32c
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Mar 29 10:52:19 2019 +0100
+
+    Use Ref::INVALID more
+
+    In this case we have to be a bit more careful since we're changing
+    code that
+    used to assign to 0,0 and now INVALID is -1, -1 but i'm confident it's
+    fine
+
+    inReplyTo seems to be only used in qt5/src/poppler-annotation.cc and
+    i've updated the code to use the boolean isInReplyTo instead of
+    checking
+    the ref number directly
+
+    The change in Dict only affects its two callers, one in Annot and
+    one in
+    Catalog. The one in catalog has been updated, the one in Annot doesn't
+    seem to need updating (and moreover if you check history before using
+    the new Dict function was using -1, -1 as ref not initialized)
+
+    The change in Array only affects its one caller, in Function,
+    whose code
+    has been updated
+
+    The embFontID change is something that was forgotten in the previous
+    commit about using Ref::INVALID
+
+    The change for iccProfileStreamA is only local to that function
+    and has
+    been changed to use Ref::INVALID in all its uses
+
+ poppler/Annot.cc                     |  3 +--
+ poppler/Annot.h                      |  1 +
+ poppler/Array.cc                     |  4 ++--
+ poppler/Array.h                      |  1 +
+ poppler/Catalog.cc                   |  2 +-
+ poppler/Dict.cc                      |  4 ++--
+ poppler/Dict.h                       |  1 +
+ poppler/Function.cc                  |  2 +-
+ poppler/GfxFont.cc                   |  8 ++++----
+ poppler/GfxFont.h                    |  2 +-
+ poppler/GfxState.cc                  | 12 +++---------
+ poppler/Link.h                       |  4 ++--
+ qt5/src/poppler-annotation-private.h |  2 +-
+ qt5/src/poppler-annotation.cc        |  6 +++---
+ 14 files changed, 24 insertions(+), 28 deletions(-)
+
+commit 9aa0f0aecf9e37f6bb35bab689956d339268a6ef
+Author: Marek Kasik <mkasik@redhat.com>
+Date:   Thu Feb 21 18:26:33 2019 +0100
+
+    Read PrintPageRange viewer preference
+
+    Lookup for PrintPageRange viewer preference
+    in constructor of ViewerPreferences and make
+    it available via getPrintPageRange() method.
+
+    https://gitlab.freedesktop.org/poppler/poppler/issues/290
+
+ poppler/ViewerPreferences.cc | 24 ++++++++++++++++++++++++
+ poppler/ViewerPreferences.h  |  4 ++++
+ 2 files changed, 28 insertions(+)
+
+commit b6ffc748e7f3fd4864e95ae383e054949bb73f70
+Author: Marek Kasik <mkasik@redhat.com>
+Date:   Thu Jan 17 14:45:06 2019 +0100
+
+    Read NumCopies viewer preference
+
+    Lookup for NumCopies viewer preference
+    in constructor of ViewerPreferences and make
+    it available via getNumCopies() method.
+
+    https://gitlab.freedesktop.org/poppler/poppler/issues/290
+
+ poppler/ViewerPreferences.cc | 8 ++++++++
+ poppler/ViewerPreferences.h  | 2 ++
+ 2 files changed, 10 insertions(+)
+
+commit b12aafcddff19bc80fab18a0a243dd17b25614d0
+Author: Marek Kasik <mkasik@redhat.com>
+Date:   Tue Jan 22 15:50:31 2019 +0100
+
+    Read PickTrayByPDFSize viewer preference
+
+    Lookup for PickTrayByPDFSize viewer preference
+    in constructor of ViewerPreferences and make
+    it available via getPickTrayByPDFSize() method.
+
+    https://gitlab.freedesktop.org/poppler/poppler/issues/290
+
+ poppler/ViewerPreferences.cc | 7 +++++++
+ poppler/ViewerPreferences.h  | 3 +++
+ 2 files changed, 10 insertions(+)
+
+commit 6e9d57bd3506c22f0f2db0647600567188666978
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Apr 3 19:16:43 2019 +0200
+
+    Update (C) of previous commit
+
+ splash/SplashXPathScanner.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8dbe2e6c480405dab9347075cf4be626f90f1d05
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Apr 3 18:02:42 2019 +0200
+
+    SplashXPathScanner::clipAALine: Fix crash on broken file
+
+    Make sure the index of allIntersections we access is valid
+
+    Fixes #748
+
+ splash/SplashXPathScanner.cc | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+commit eec84fe2d2dad20acdfb47cf06f8171e6f9e74dc
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Tue Apr 2 01:14:30 2019 +0200
+
+    Make test pass on MSVC
+
+    QStringliteral+MSVC+non ascii chars doesn't play very well
+
+ qt5/tests/check_annotations.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 07067734e9e8b39889b5569e72bb64095773b564
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Tue Apr 2 00:38:30 2019 +0200
+
+    Update (C) of previous commits
+
+ poppler/TextOutputDev.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 647344ebbef536248e47b1ab1f1fccb20c941aac
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Tue Apr 2 00:29:42 2019 +0200
+
+    Fix MSVC compile
+
+    Windows.h defines max/min macros, these extra parentheses makes
+    it happy
+    enough ...
+
+ goo/GooCheckedOps.h | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+commit a17bfb24f7caa4ab5cd7ecc0ccbb7cfc7d72c62a
+Author: Nelson Benítez León <nbenitezl@gmail.com>
+Date:   Fri Mar 29 16:58:17 2019 -0400
+
+    add testcase for issue #743
+
+ qt5/tests/check_search.cpp | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+
+commit 67d81ed907040b22c789466f990ba0000f2df7d5
+Author: Nelson Benítez León <nbenitezl@gmail.com>
+Date:   Sun Mar 24 19:44:42 2019 -0400
+
+    findText: fix regression on case-insensitive search
+
+    introduced by commit 86326030f6989c79f8dd9e91cd4c249278cdbc49
+
+    The function to detect 7bit Ascii assumed the check was being
+    done on a plain C char type (1 byte length) whereas the passed
+    Unicode type is bigger (defined as unsigned int) and so can hold
+    larger values. So fix our detection for an Ascii7 char appropriately.
+
+    Fixes issue #743
+
+ poppler/TextOutputDev.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit ea12ae67be12883e4626b34db8f2f849fb6d56d7
+Author: LE GARREC Vincent <gitlab-freedesktop@le-garrec.fr>
+Date:   Sun Mar 31 20:49:25 2019 +0000
+
+    ofz-8443: Integer-overflow in identifyCFF
+
+    https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=8443
+
+ fofi/FoFiIdentifier.cc |  8 +++++---
+ goo/GooCheckedOps.h    | 26 +++++++++++++++-----------
+ 2 files changed, 20 insertions(+), 14 deletions(-)
+
+commit 516e6149572a16747f21d6510f844b5879954ec0
+Author: LE GARREC Vincent <gitlab-freedesktop@le-garrec.fr>
+Date:   Sun Mar 31 00:33:09 2019 +0000
+
+    Integer-overflow in Gfx::doAxialShFill
+
+    oss-fuzz/8631
+
+ goo/GooCheckedOps.h | 11 +++++++++++
+ poppler/Gfx.cc      | 21 +++++++++++----------
+ 2 files changed, 22 insertions(+), 10 deletions(-)
+
+commit f25f7f19fab3559ecf2d427a52193767c02e2640
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Mar 31 01:19:46 2019 +0100
+
+    Update (C) of previous commits
+
+ poppler/Form.cc            | 2 +-
+ poppler/Gfx.cc             | 2 +-
+ poppler/GlobalParamsWin.cc | 2 +-
+ poppler/Hints.cc           | 1 +
+ poppler/Lexer.h            | 1 +
+ poppler/Linearization.cc   | 1 +
+ poppler/Parser.cc          | 2 +-
+ poppler/Parser.h           | 1 +
+ 8 files changed, 8 insertions(+), 4 deletions(-)
+
+commit eb40274320381deca89898fb78b57091d2b804cc
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Wed Nov 21 18:08:13 2018 +0100
+
+    Since a Parser cannot be used without a Lexer, make the Parser own
+    the Lexer by value and construct it in place.
+
+ poppler/Gfx.cc             |  2 +-
+ poppler/GlobalParamsWin.cc |  3 +--
+ poppler/Hints.cc           |  2 +-
+ poppler/Lexer.h            |  3 +++
+ poppler/Linearization.cc   |  2 +-
+ poppler/Parser.cc          | 61
+ ++++++++++++++++++++++++----------------------
+ poppler/Parser.h           | 10 ++++----
+ poppler/XRef.cc            | 33 ++++++++++---------------
+ 8 files changed, 57 insertions(+), 59 deletions(-)
+
+commit 8aa78dbcf5370d78ea025e7249e9119202767e44
+Author: Nelson Benítez León <nbenitezl@gmail.com>
+Date:   Sun Nov 11 19:25:30 2018 +0500
+
+    Form.cc: fix radiobutton reporting wrong state
+
+    When a radiobutton (belonging to a normal radiobutton group)
+    has a /V key matching his 'OnStr' state, then when you
+    ask that radiobutton for his state (eg. radiobutton->state())
+    it will wrongly return 'true', when really the active
+    radiobutton is another one in the group.
+
+    This happens because the faulty radiobutton was not passing
+    the getState() call to his Parent (which every radiobutton
+    in a group should do, as the Parent stores the value of the current
+    active item).
+
+    The code was not doing it because it had a valid AppearanceState
+    (/V key). That behaviour may be right for checkboxes but not for
+    radiobuttons.
+
+    A testcase is included. An example definition of an
+    affected radiobutton follows:
+
+    /F 4
+    /FT /Btn
+    /Ff 49152
+    /AP /N /Beer 59 0 R /Off 61 0 R
+    /AS /Beer
+    /MK /BC [1,0,0] /BG [1,1,1] /CA (4)
+    /P 20 0 R
+    /Parent 8 0 R
+    /Rect [235.277,654.247,249.224,668.194]
+    /Subtype /Widget
+    /Type /Annot
+    /V /Beer
+
+    Fixes issue #159
+
+ poppler/Form.cc           |  5 ++++-
+ qt5/tests/check_forms.cpp | 47
+ +++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 51 insertions(+), 1 deletion(-)
+
+commit b0f11e3c8696cbb334b765789a548419669fa4ea
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Mar 31 00:39:09 2019 +0100
+
+    Update (C) of previous commit
+
+ qt5/src/poppler-private.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 74abafe107d0e865919557034c7d6d9dcd19ef6c
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Sat Mar 30 19:31:58 2019 +0100
+
+    Implement UnicodeParsedString in terms of QString::fromUtf16 for
+    significant simplifications.
+
+ qt5/src/poppler-private.cc | 37 +++++++------------------------------
+ 1 file changed, 7 insertions(+), 30 deletions(-)
+
+commit b9512adc677408f74087f7865b2d7ea99b81cc4b
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Sat Mar 30 12:25:51 2019 +0100
+
+    Add test case for annotations containing UTF-16LE-encoded text.
+
+ qt5/tests/check_annotations.cpp | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+commit d607906598243cfc322073222d7d1c9813d7ad79
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sat Mar 30 11:47:46 2019 +0100
+
+    (C) of previous commits
+
+ goo/GooString.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 255eec8cac9ad68b129ed44326118dd1064eb331
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Mar 29 12:44:20 2019 +0100
+
+    Use the default provided Ref = operator, it's good enough
+
+ poppler/Link.cc         | 6 ++----
+ poppler/Object.h        | 2 +-
+ poppler/StructElement.h | 2 +-
+ 3 files changed, 4 insertions(+), 6 deletions(-)
+
+commit 81fc9aa333f81be496d8255cd2ad4d0b9e23bba6
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Mar 29 12:39:58 2019 +0100
+
+    Use the existing Ref operator==
+
+ glib/poppler-action.cc            |  4 ++--
+ poppler/Annot.cc                  |  8 ++++----
+ poppler/Annot.h                   |  4 ++--
+ poppler/CairoFontEngine.cc        |  6 +++---
+ poppler/Form.cc                   |  3 +--
+ poppler/MarkedContentOutputDev.cc |  5 ++---
+ poppler/PSOutputDev.cc            | 25 +++++++++----------------
+ poppler/Page.cc                   |  4 ++--
+ poppler/SplashOutputDev.cc        |  7 +++----
+ test/pdf-fullrewrite.cc           |  6 +++---
+ 10 files changed, 31 insertions(+), 41 deletions(-)
+
+commit 244c7d6926463b079b1f96e34d9e4451d352942e
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Mar 29 12:59:16 2019 +0100
+
+    Make Catalog::findPage just take a Ref instead of num and gen
+
+    All the callers already have a ref so makes no sense to unbox it
+
+ cpp/poppler-destination.cpp       |  3 ++-
+ glib/poppler-action.cc            |  4 ++--
+ glib/poppler-structure-element.cc |  2 +-
+ poppler/Annot.cc                  |  4 ++--
+ poppler/Catalog.cc                |  4 ++--
+ poppler/Catalog.h                 |  2 +-
+ poppler/PDFDoc.h                  |  2 +-
+ poppler/StructElement.cc          |  2 +-
+ qt5/src/poppler-link.cc           |  4 ++--
+ utils/HtmlOutputDev.cc            | 10 +++++-----
+ 10 files changed, 19 insertions(+), 18 deletions(-)
+
+commit e2ccb1cdf7702a2c014e7aaeeeb8d5fc4fcf4d18
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Mar 29 12:43:39 2019 +0100
+
+    FormField: don't assign ref to 0, 0 then to just assign it to aref
+
+ poppler/Form.cc | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit 8c8e0a143e975b16e6c437c03dc2267e7e8ff3fc
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Mar 28 15:50:15 2019 +0100
+
+    GfxICCBasedColorSpace: Remove unused member variable
+
+ poppler/GfxState.cc | 8 +++-----
+ poppler/GfxState.h  | 6 ++----
+ 2 files changed, 5 insertions(+), 9 deletions(-)
+
+commit aaff2ee913fcc37cf35384e198587fe848d2cdf3
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Mar 28 14:29:13 2019 +0100
+
+    cpp: Support UTF16-LE strings
+
+    They are not supported in the spec but Adobe supports them and there's
+            files outthere with these kind of strings, so we're
+            supporting them
+
+ cpp/poppler-private.cpp | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
+
+commit 3c12c660748ccdd0b7c08b8f4a2891ad1368e437
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Mar 28 12:58:41 2019 +0100
+
+    qt5: small optimization to UnicodeParsedString
+
+    by using QString::reserve it should be faster and use less memory
+
+ qt5/src/poppler-private.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 623d073030259042921d34034cdcf701dae7c96b
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Mar 28 12:47:22 2019 +0100
+
+    qt: UnicodeParsedString support UTF16-LE strings
+
+    They are not part of the standard but Adobe seems to support them and
+    there's files out there like that so better to support them than not
+
+ qt5/src/poppler-private.cc  | 15 ++++++++++++---
+ qt5/tests/check_strings.cpp |  2 ++
+ 2 files changed, 14 insertions(+), 3 deletions(-)
+
+commit 0bb9dbc608a73df0a5579c0db3347f2d147266c4
+Author: Christophe Fergeau <cfergeau@redhat.com>
+Date:   Tue Sep 26 11:02:58 2017 +0200
+
+    document: Handle UTF16-LE annotations
+
+    I can produce such annotations when adding annotations to a PDF
+    attachement from the standard mail app on my iPhone (iOS 12.1).
+    They currently all show as "ÿþÚ" rather than the actual string
+    content.
+
+    UTF16-BE vs UTF16-LE is detected by inferring the endianness from the
+    first two bytes of the string (0xFF 0xFE and 0xFE 0xFF aka Byte Order
+    Marker).
+
+ glib/poppler-document.cc | 4 ++++
+ goo/GooString.h          | 1 +
+ 2 files changed, 5 insertions(+)
+
+commit 926ea4645fa36d29d4bf89009719716668103366
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Mar 28 00:09:28 2019 +0100
+
+    Use the newly introduced Ref::INVALID()
+
+ poppler/Annot.cc         | 10 ++++------
+ poppler/GfxFont.cc       | 14 +++++++-------
+ poppler/GfxFont.h        |  4 ++--
+ poppler/Link.cc          |  6 +++---
+ poppler/Link.h           |  2 +-
+ poppler/StructElement.h  |  2 +-
+ poppler/StructTreeRoot.h |  4 ++--
+ qt5/src/poppler-link.cc  |  6 +++---
+ qt5/src/poppler-page.cc  |  8 +++-----
+ 9 files changed, 26 insertions(+), 30 deletions(-)
+
+commit 8122f6d6d409b53151a20c5578fc525ee97315e8
+Author: Marek Kasik <mkasik@redhat.com>
+Date:   Thu Mar 21 13:47:51 2019 +0100
+
+    cairo: Constrain number of cycles in rescale filter
+
+    Pass address of the first byte after end of the source buffer
+    to downsample_row_box_filter() so that we can check
+    that we don't run out of it.
+
+    Fixes issue #736
+
+ poppler/CairoRescaleBox.cc | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+commit d716e636231c8d636bf2139896d817b66fe6d510
+Author: Marek Kasik <mkasik@redhat.com>
+Date:   Thu Mar 21 13:15:37 2019 +0100
+
+    cairo: Compute correct coverage values for box filter
+
+    Use double precision for computation of coverage
+    of the left most pixel in the box filter.
+
+    Issue #736
+
+ poppler/CairoRescaleBox.cc | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+commit 2b5cccbafc79d561811906dfa5bc288aa9478b10
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 17:57:17 2019 +0100
+
+    Rework AnnotPopup parent handling code
+
+    The old code was not updating the parent member on setParent
+
+ poppler/Annot.cc | 10 ++++++----
+ poppler/Annot.h  |  4 ++--
+ poppler/Object.h |  6 ++++++
+ poppler/Page.cc  |  2 +-
+ 4 files changed, 15 insertions(+), 7 deletions(-)
+
+commit 732bc31dcc7aa7fda42e4dbaa8a17f0d39125156
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Mar 22 22:35:45 2019 +0100
+
+    Update (C) of past commits
+
+ poppler/Annot.cc              | 2 +-
+ poppler/Annot.h               | 2 +-
+ qt5/src/poppler-annotation.cc | 2 +-
+ utils/HtmlOutputDev.cc        | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+commit 30c731b487190c02afff3f036736a392eb60cd9a
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Fri Mar 22 19:12:47 2019 +0100
+
+    Properly initialize HtmlOutputDev::page to avoid SIGSEGV upon
+    error exit.
+
+    Closes #742
+
+ utils/HtmlOutputDev.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit c317087a9e5db4f6441b4e399837d5b9afbe46a0
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Mar 22 00:21:12 2019 +0100
+
+    Stop requiring gcc 4.9
+
+    We now just support whatever Ubuntu 16.04 has as minimum (gcc 5.4.0)
+
+ .gitlab-ci.yml | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
+
+commit 9068f1c0d2f643471a7e159f4a03dca4a20518f2
+Author: Tobias Deiminger <haxtibal@posteo.de>
+Date:   Thu Mar 21 23:43:48 2019 +0000
+
+    Don't error out if there's no DA in FreeText annotation
+
+    We can proceed anyway, hardcoded default values will be used in
+    AnnotFreeText::generateFreeTextAppearance.
+
+ poppler/Annot.cc              | 7 ++++---
+ poppler/Annot.h               | 2 ++
+ qt5/src/poppler-annotation.cc | 9 ++++++---
+ 3 files changed, 12 insertions(+), 6 deletions(-)
+
+commit fb5d8000b8f5169d57f84b911f5475b9003fa1ae
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Mar 21 23:48:45 2019 +0100
+
+    Update (C) from last commit
+
+ cpp/poppler-font.cpp                      | 1 +
+ cpp/poppler-toc-private.h                 | 1 +
+ cpp/poppler-toc.cpp                       | 1 +
+ poppler/Annot.cc                          | 2 +-
+ poppler/FontInfo.cc                       | 1 +
+ poppler/FontInfo.h                        | 1 +
+ poppler/Form.cc                           | 1 +
+ poppler/Form.h                            | 1 +
+ poppler/Gfx.h                             | 1 +
+ poppler/GfxState.cc                       | 2 +-
+ poppler/GfxState.h                        | 2 +-
+ poppler/GfxState_helpers.h                | 1 +
+ poppler/GlobalParams.cc                   | 1 +
+ poppler/GlobalParams.h                    | 1 +
+ poppler/GlobalParamsWin.cc                | 1 +
+ poppler/JBIG2Stream.cc                    | 1 +
+ poppler/JBIG2Stream.h                     | 1 +
+ poppler/Link.cc                           | 1 +
+ poppler/Link.h                            | 1 +
+ poppler/OptionalContent.cc                | 1 +
+ poppler/OptionalContent.h                 | 1 +
+ poppler/Outline.cc                        | 1 +
+ poppler/Outline.h                         | 1 +
+ poppler/PDFDocFactory.cc                  | 1 +
+ poppler/PDFDocFactory.h                   | 1 +
+ poppler/PSOutputDev.cc                    | 1 +
+ poppler/PSOutputDev.h                     | 1 +
+ poppler/PageLabelInfo.h                   | 1 +
+ poppler/PageLabelInfo_p.h                 | 1 +
+ poppler/TextOutputDev.cc                  | 1 +
+ poppler/TextOutputDev.h                   | 1 +
+ poppler/UnicodeMap.cc                     | 1 +
+ poppler/UnicodeMapFuncs.h                 | 1 +
+ qt5/src/poppler-annotation-helper.h       | 2 +-
+ qt5/src/poppler-document.cc               | 1 +
+ qt5/src/poppler-fontinfo.cc               | 1 +
+ qt5/src/poppler-optcontent.cc             | 1 +
+ qt5/src/poppler-outline.cc                | 1 +
+ qt5/src/poppler-page-transition-private.h | 1 +
+ qt5/src/poppler-page.cc                   | 2 +-
+ qt5/src/poppler-private.cc                | 1 +
+ qt5/src/poppler-private.h                 | 1 +
+ splash/Splash.cc                          | 1 +
+ splash/SplashBitmap.cc                    | 1 +
+ splash/SplashBitmap.h                     | 1 +
+ test/perf-test.cc                         | 1 +
+ utils/HtmlOutputDev.cc                    | 1 +
+ utils/HtmlOutputDev.h                     | 1 +
+ utils/Win32Console.h                      | 1 +
+ utils/pdfdetach.cc                        | 1 +
+ utils/pdffonts.cc                         | 1 +
+ utils/printencodings.cc                   | 1 +
+ 52 files changed, 52 insertions(+), 5 deletions(-)
+
+commit b843b42cb12f1038c470a646c4899af119a0bece
+Author: Oliver Sander <oliver.sander@tu-dresden.de>
+Date:   Thu Mar 21 16:49:01 2019 +0100
+
+    Replace 'auto' by actual types
+
+ glib/poppler-action.cc        |  2 +-
+ glib/poppler-page.cc          | 14 +++++++-------
+ qt5/src/poppler-document.cc   |  2 +-
+ qt5/src/poppler-optcontent.cc |  4 ++--
+ qt5/src/poppler-outline.cc    |  2 +-
+ 5 files changed, 12 insertions(+), 12 deletions(-)
+
+commit 7f32f8b78ffecc7788267d4d98d4e6247b955489
+Author: Oliver Sander <oliver.sander@tu-dresden.de>
+Date:   Thu Dec 6 06:54:54 2018 +0100
+
+    Remove unused variable
+
+ glib/poppler-page.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a00a867b78a525d4dc57cd24006d80ea56041bdc
+Author: Oliver Sander <oliver.sander@tu-dresden.de>
+Date:   Mon Dec 3 11:37:27 2018 +0100
+
+    Unify the declarations of PSOutPaperSize
+
+    The clazy CI complains about a 'struct vs. class' inconsistency.
+
+ poppler/PSOutputDev.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 9bc752c7fabe190987ae46ed28620b62cdff60e9
+Author: Oliver Sander <oliver.sander@tu-dresden.de>
+Date:   Sun Dec 2 21:02:51 2018 +0100
+
+    Remove GooList completely
+
+ CMakeLists.txt              |  1 -
+ cpp/poppler-font.cpp        |  2 +-
+ cpp/poppler-toc-private.h   |  4 +---
+ cpp/poppler-toc.cpp         |  7 +++---
+ glib/poppler-document.cc    | 13 +++++------
+ glib/poppler-page.cc        |  1 -
+ goo/GooList.h               | 53
+ ---------------------------------------------
+ poppler/Annot.cc            | 11 +++++-----
+ poppler/FontInfo.cc         |  6 ++---
+ poppler/FontInfo.h          |  5 ++---
+ poppler/Form.cc             |  8 +++----
+ poppler/Form.h              |  5 ++---
+ poppler/Gfx.h               |  1 -
+ poppler/GfxState.cc         | 14 ++++++------
+ poppler/GfxState.h          | 19 ++++++----------
+ poppler/GlobalParams.cc     | 11 +++++-----
+ poppler/GlobalParams.h      |  5 +++--
+ poppler/GlobalParamsWin.cc  |  1 -
+ poppler/JBIG2Stream.cc      | 13 +++++------
+ poppler/JBIG2Stream.h       |  4 ++--
+ poppler/Link.cc             | 15 ++++++-------
+ poppler/Link.h              | 13 +++++------
+ poppler/OptionalContent.cc  | 11 +++++-----
+ poppler/OptionalContent.h   |  7 +++---
+ poppler/Outline.cc          |  5 ++---
+ poppler/Outline.h           | 11 +++++-----
+ poppler/PDFDocFactory.cc    |  5 ++---
+ poppler/PDFDocFactory.h     |  4 ++--
+ poppler/PSOutputDev.cc      |  3 +--
+ poppler/PSOutputDev.h       |  2 +-
+ poppler/TextOutputDev.cc    | 49
+ ++++++++++++++++++++---------------------
+ poppler/TextOutputDev.h     | 14 ++++++------
+ poppler/UnicodeMap.cc       |  1 -
+ qt5/src/poppler-document.cc |  4 ++--
+ qt5/src/poppler-fontinfo.cc |  2 +-
+ qt5/src/poppler-outline.cc  |  3 +--
+ qt5/src/poppler-page.cc     |  2 +-
+ qt5/src/poppler-private.cc  |  4 ++--
+ qt5/src/poppler-private.h   |  2 +-
+ splash/Splash.cc            |  1 -
+ splash/SplashBitmap.cc      |  5 ++---
+ splash/SplashBitmap.h       |  6 ++---
+ test/perf-test.cc           |  1 -
+ utils/HtmlOutputDev.cc      | 11 +++++-----
+ utils/HtmlOutputDev.h       |  9 ++++----
+ utils/pdfdetach.cc          |  1 -
+ utils/pdffonts.cc           |  2 +-
+ utils/printencodings.cc     |  5 +++--
+ 48 files changed, 148 insertions(+), 234 deletions(-)
+
+commit fa8f3f22e85a5508fa53e8604b079e9b73e63f76
+Author: Oliver Sander <oliver.sander@tu-dresden.de>
+Date:   Sun Dec 2 20:41:27 2018 +0100
+
+    Remove method GooList::get
+
+    Use operator[] instead.  This is another move towards discarding
+    GooList in favor of std::vector.
+
+ cpp/poppler-font.cpp          |  2 +-
+ cpp/poppler-toc.cpp           |  2 +-
+ glib/poppler-action.cc        |  4 +--
+ glib/poppler-document.cc      | 24 ++++++-------
+ glib/poppler-page.cc          | 12 +++----
+ goo/GooList.h                 |  4 ---
+ poppler/Annot.cc              | 78
+ +++++++++++++++++++++----------------------
+ poppler/Form.cc               |  4 +--
+ poppler/GfxState.cc           | 10 +++---
+ poppler/GlobalParams.cc       |  8 ++---
+ poppler/JBIG2Stream.cc        | 28 ++++++++--------
+ poppler/OptionalContent.cc    |  2 +-
+ poppler/PDFDocFactory.cc      |  2 +-
+ poppler/PSOutputDev.cc        |  8 ++---
+ poppler/TextOutputDev.cc      | 12 +++----
+ qt5/src/poppler-fontinfo.cc   |  2 +-
+ qt5/src/poppler-optcontent.cc |  4 +--
+ qt5/src/poppler-page.cc       |  2 +-
+ qt5/src/poppler-private.cc    |  2 +-
+ splash/Splash.cc              |  2 +-
+ splash/SplashBitmap.cc        |  2 +-
+ utils/HtmlOutputDev.cc        |  6 ++--
+ utils/pdffonts.cc             |  4 +--
+ utils/printencodings.cc       |  2 +-
+ 24 files changed, 111 insertions(+), 115 deletions(-)
+
+commit 760ca656bd30bba162392011ebca5c67df25ae47
+Author: Oliver Sander <oliver.sander@tu-dresden.de>
+Date:   Sat Dec 1 13:36:40 2018 +0100
+
+    Remove method deleteGooList
+
+ cpp/poppler-font.cpp        |  5 ++++-
+ glib/poppler-document.cc    |  5 ++++-
+ goo/GooList.h               |  8 --------
+ poppler/Annot.cc            | 30 ++++++++++++++++++++++++------
+ poppler/Form.cc             | 15 ++++++++++++---
+ poppler/GfxState.cc         |  5 ++++-
+ poppler/GlobalParams.cc     | 10 ++++++++--
+ poppler/JBIG2Stream.cc      | 10 ++++++++--
+ poppler/Link.cc             | 24 ++++++++++++++++++------
+ poppler/OptionalContent.cc  |  5 ++++-
+ poppler/Outline.cc          | 10 ++++++++--
+ poppler/PDFDocFactory.cc    |  5 ++++-
+ poppler/PSOutputDev.cc      |  5 ++++-
+ poppler/TextOutputDev.cc    | 38 ++++++++++++++++++++++++++++++--------
+ qt5/src/poppler-fontinfo.cc |  6 +++++-
+ splash/SplashBitmap.cc      |  5 ++++-
+ utils/HtmlOutputDev.cc      | 10 ++++++++--
+ 17 files changed, 149 insertions(+), 47 deletions(-)
+
+commit 3bf47e100717f4295652d578ecd12e489937b329
+Author: Oliver Sander <oliver.sander@tu-dresden.de>
+Date:   Fri Nov 30 22:20:01 2018 +0100
+
+    Make GooList a template type
+
+    One more step towards getting rid of it completely.
+
+ cpp/poppler-font.cpp          |  4 +--
+ cpp/poppler-toc-private.h     |  5 ++--
+ cpp/poppler-toc.cpp           |  6 ++---
+ glib/poppler-action.cc        |  2 +-
+ glib/poppler-document.cc      | 14 +++++-----
+ glib/poppler-page.cc          | 18 +++++--------
+ goo/GooList.h                 | 13 ++++-----
+ poppler/Annot.cc              | 22 +++++++--------
+ poppler/FontInfo.cc           |  7 +++--
+ poppler/FontInfo.h            |  4 +--
+ poppler/Form.cc               | 14 +++++-----
+ poppler/Form.h                |  4 +--
+ poppler/GfxState.cc           | 24 ++++++++---------
+ poppler/GfxState.h            | 19 ++++++++-----
+ poppler/GlobalParams.cc       | 14 +++++-----
+ poppler/GlobalParams.h        |  5 ++--
+ poppler/JBIG2Stream.cc        | 16 +++++------
+ poppler/JBIG2Stream.h         |  5 ++--
+ poppler/Link.cc               | 20 +++++++-------
+ poppler/Link.h                | 14 +++++-----
+ poppler/OptionalContent.cc    | 13 +++++----
+ poppler/OptionalContent.h     |  8 +++---
+ poppler/Outline.cc            |  8 +++---
+ poppler/Outline.h             | 15 +++++------
+ poppler/PDFDocFactory.cc      |  6 ++---
+ poppler/PDFDocFactory.h       |  5 ++--
+ poppler/PSOutputDev.cc        |  4 +--
+ poppler/PSOutputDev.h         |  5 ++--
+ poppler/TextOutputDev.cc      | 62
+ +++++++++++++++++++++----------------------
+ poppler/TextOutputDev.h       | 18 ++++++-------
+ qt5/src/poppler-document.cc   |  2 +-
+ qt5/src/poppler-fontinfo.cc   |  4 +--
+ qt5/src/poppler-optcontent.cc |  4 +--
+ qt5/src/poppler-page.cc       |  2 +-
+ qt5/src/poppler-private.cc    |  4 +--
+ qt5/src/poppler-private.h     |  3 ++-
+ splash/Splash.cc              |  2 +-
+ splash/SplashBitmap.cc        |  8 +++---
+ splash/SplashBitmap.h         |  6 ++---
+ utils/HtmlOutputDev.cc        | 14 +++++-----
+ utils/HtmlOutputDev.h         |  9 ++++---
+ utils/pdffonts.cc             |  2 +-
+ utils/printencodings.cc       |  2 +-
+ 43 files changed, 218 insertions(+), 218 deletions(-)
+
+commit 5610fc71fcd6b4c54e805470259ed95547aa2328
+Author: Oliver Sander <oliver.sander@tu-dresden.de>
+Date:   Fri Nov 30 21:44:58 2018 +0100
+
+    pdfdetach: Replace GooList by std::vector
+
+ utils/pdfdetach.cc | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
+commit fda9a2a2fcb0d12add4812c84f7d39684d2ca6d7
+Author: Oliver Sander <oliver.sander@tu-dresden.de>
+Date:   Fri Nov 30 17:46:02 2018 +0100
+
+    Remove method GooList::getLength
+
+    Use method 'size' (from std::vector) instead.
+
+ cpp/poppler-font.cpp          |  4 ++--
+ cpp/poppler-toc.cpp           |  6 +++---
+ glib/poppler-action.cc        |  5 ++---
+ glib/poppler-document.cc      |  8 ++++----
+ glib/poppler-page.cc          | 20 +++++++++-----------
+ goo/GooList.h                 |  3 ---
+ poppler/Annot.cc              | 14 +++++++-------
+ poppler/Form.cc               |  8 ++++----
+ poppler/GfxState.cc           | 20 ++++++++++----------
+ poppler/GlobalParams.cc       |  9 ++++-----
+ poppler/JBIG2Stream.cc        | 29 ++++++++++++++---------------
+ poppler/OptionalContent.cc    |  2 +-
+ poppler/Outline.cc            |  2 +-
+ poppler/PDFDocFactory.cc      |  2 +-
+ poppler/PSOutputDev.cc        |  6 +++---
+ poppler/TextOutputDev.cc      | 21 ++++++++++-----------
+ qt5/src/poppler-document.cc   |  4 ++--
+ qt5/src/poppler-fontinfo.cc   |  4 ++--
+ qt5/src/poppler-optcontent.cc |  4 ++--
+ qt5/src/poppler-page.cc       |  2 +-
+ qt5/src/poppler-private.cc    |  3 +--
+ splash/Splash.cc              |  4 ++--
+ splash/SplashBitmap.cc        |  2 +-
+ utils/HtmlOutputDev.cc        |  6 +++---
+ utils/HtmlOutputDev.h         |  2 +-
+ utils/pdfdetach.cc            |  2 +-
+ utils/pdffonts.cc             |  4 ++--
+ utils/printencodings.cc       |  2 +-
+ 28 files changed, 94 insertions(+), 104 deletions(-)
+
+commit f4e902124c90333db9b2ff2fee3dcf01f52df999
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Mar 21 20:02:28 2019 +0100
+
+    Fix mismatched free/delete
+
+ poppler/OptionalContent.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 5a5ae212c8e476dbddb9ce8f7a5e30589ba6c8e5
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Mar 21 20:01:12 2019 +0100
+
+    Add missing include guards
+
+ poppler/GfxState_helpers.h                | 7 ++++++-
+ poppler/PageLabelInfo.h                   | 7 ++++++-
+ poppler/PageLabelInfo_p.h                 | 7 ++++++-
+ poppler/UnicodeMapFuncs.h                 | 7 ++++++-
+ qt5/src/poppler-annotation-helper.h       | 5 +++++
+ qt5/src/poppler-page-transition-private.h | 7 ++++++-
+ utils/Win32Console.h                      | 6 ++++++
+ 7 files changed, 41 insertions(+), 5 deletions(-)
+
+commit e68916fca85e497d73327625d72fcf8879ed67b2
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Mar 21 00:05:10 2019 +0100
+
+    0.75.0
+
+ CMakeLists.txt   |  4 ++--
+ NEWS             | 17 +++++++++++++++++
+ cpp/Doxyfile     |  2 +-
+ qt5/src/Doxyfile |  2 +-
+ 4 files changed, 21 insertions(+), 4 deletions(-)
+
+commit cb1e3809e3c5329ca4dbd29313c5c2241332874b
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Wed Mar 20 21:39:14 2019 +0100
+
+    Add CI job to generate glib frontend HTML-based API documentation.
+
+ .gitlab-ci.yml | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+commit 333bf1757bc68ce342ca708b881c75914a7c463a
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Wed Mar 20 00:16:27 2019 +0100
+
+    Also build the Doxygen-based CPP frontend docs in the CI so that
+    they can be automatically published via GitLab Pages.
+
+ .gitlab-ci.yml | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+commit a1e0f77578e88b9f089fd88ccba0608a24f2901c
+Author: Yves-Gaël Chény <gitlab@r0b0t.fr>
+Date:   Mon Mar 11 12:20:40 2019 +0100
+
+    add to parameters for command line tools pdftoppm
+
+    -sep : single character separor between name and page number,
+    default -
+    -forcenum : force page number even if there is only one page
+
+ utils/pdftoppm.1  |  6 ++++++
+ utils/pdftoppm.cc | 11 +++++++++--
+ 2 files changed, 15 insertions(+), 2 deletions(-)
+
+commit 20424e7b6a8b6505db1f6fea8318e9f089a8384c
+Author: Adam Reichold <adam.reichold@t-online.de>
+Date:   Sat Feb 9 10:11:24 2019 +0100
+
+    Publish Qt5 frontend API documentation as GitLab artifacts and
+    trigger publish via GitLab pages.
+
+ .gitlab-ci.yml | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+
+commit fada09a2ccc11a3a1d308e810f1336d8df6011fd
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Mon Mar 18 00:50:00 2019 +0100
+
+    pdfunite: Fix stack overflow on broken file
+
+    Fixes issue #741
+
+ poppler/PDFDoc.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 45c6c323fd577a96bb1bf0a53e1d1e5562932fad
+Author: Umang Malik <umang99m@gmail.com>
+Date:   Sat Mar 16 00:25:05 2019 +0000
+
+    Fix parsing of polygon annotation LE values
+
+    AnnotPolygon::initialize used to look for strings, corrected it
+    to look for names because pdf reference says LE : An array of two
+    names...
+
+ poppler/Annot.cc | 240
+ ++++++++++++++++++++++++++++++++++++-------------------
+ poppler/Annot.h  |   7 +-
+ 2 files changed, 162 insertions(+), 85 deletions(-)
+
+commit 12d4c8a46dd7b37bdc475d88d81ec5eecae48627
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Tue Mar 12 22:59:59 2019 +0100
+
+    Switch clazy CI to regular fedora
+
+    rawhide is broken at this point and the current "fedora" has also
+    clazy
+    1.5 so that's enough for us
+
+ .gitlab-ci.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 148c881286049dde9812beecfed8a7636e6f6def
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Tue Mar 5 00:54:00 2019 +0100
+
+    Update (C) of recent commits
+
+ poppler/JPXStream.cc | 1 +
+ utils/pdfunite.cc    | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 7b4e372deeb716eb3fe3a54b31ed41af759224f9
+Author: Marek Kasik <mkasik@redhat.com>
+Date:   Mon Mar 4 12:55:12 2019 +0100
+
+    pdfunite: Check XRef's Catalog for being a Dict
+
+    Check whether Catalog from XRef is Dict for each document
+    passed to pdfunite and return error if not.
+
+    https://gitlab.freedesktop.org/poppler/poppler/issues/706
+
+ utils/pdfunite.cc | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+commit 2e406d3de277545c61ef462aca5b9e7b984dc477
+Author: Robert Niemi <robert.den.klurige@gmail.com>
+Date:   Sat Mar 2 06:43:30 2019 +0100
+
+    JPXStream: Replaces undefined left-shift operations.
+
+    Left-shifting a negative signed int is undefined. Most compilers
+    shifts the same
+    way as unsigned ints, but it's better to be clear about it.
+
+ poppler/JPXStream.cc | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit d9d9c9f16fbd475aa7653a535f38681d3ccb7899
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sat Mar 2 00:07:29 2019 +0100
+
+    pdfsig: fix use after free
+
+    It can happen that destroying the pdf tries to log, which needs
+    globalParams, so destroy globalParams last
+
+    Fixes issue #733
+
+ utils/pdfsig.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 33befc25c42ff52e44ffd857a4a114b180a952e4
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Mar 1 17:46:55 2019 +0100
+
+    SignatureHandler: Fix crash on broken files
+
+    Issue #732
+
+ poppler/SignatureHandler.cc | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+commit 679339e0384a630052902cfbad1b278440857046
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 17:42:20 2019 +0100
+
+    Function: use new Array::get function
+
+    Makes code simple and saves getting twice if it's a ref
+
+ poppler/Function.cc | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+commit ef6d9e341c98aaf727a27bd858eda7c52b4bed21
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 17:40:44 2019 +0100
+
+    Array: introduce get variant that returns also the Ref it is one
+
+    Similar to the new one in Dict
+
+ poppler/Array.cc | 14 ++++++++++++++
+ poppler/Array.h  |  1 +
+ 2 files changed, 15 insertions(+)
+
+commit 11d6103d45521d0cfec2a5e49a8214bf85843c7f
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 17:26:47 2019 +0100
+
+    Annot: Use the new Dict::lookup function
+
+    Simplifies the code
+
+ poppler/Annot.cc | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+commit 56dc35f28a3f878e57ad7eb2b0ca63f325882f12
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 17:05:43 2019 +0100
+
+    Annot: Remove unneeded copy() calls
+
+ poppler/Annot.cc | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+commit ff77c618d2d71ff7b9e473b5735b027ec9ba55bd
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 17:02:42 2019 +0100
+
+    Link: Remove unneeded copy() calls
+
+ poppler/Link.cc | 17 ++++++++++-------
+ poppler/Link.h  |  8 ++++----
+ 2 files changed, 14 insertions(+), 11 deletions(-)
+
+commit d57ceff195f5d02504d7adf7396defc915272b67
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 16:52:58 2019 +0100
+
+    Gfx: Save unneeded copy() calls
+
+ poppler/Gfx.cc | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+commit 008431647c573d342f07f2e05123bdce938802a3
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 16:52:33 2019 +0100
+
+    StructElement: save unneeded copy() calls
+
+ poppler/StructElement.cc | 5 +++--
+ poppler/StructElement.h  | 4 ++--
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+commit 38422a432c4f49e31467e5eae447e244eade3218
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 16:51:57 2019 +0100
+
+    OptionalContent: constify
+
+ poppler/OptionalContent.cc | 2 +-
+ poppler/OptionalContent.h  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit d2ccd7f9cd26a877492bc5dd02094defa9be0592
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 16:51:25 2019 +0100
+
+    Form: Save unneeded copy() calls
+
+ poppler/Form.cc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit c4c8b5be381c925328ecace0753ce4d0c1305bf8
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 16:50:36 2019 +0100
+
+    FontInfo: Save unneeded copy() call
+
+ poppler/FontInfo.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a1b7baeab913931b06e53d2d271481f711eeab81
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 16:50:19 2019 +0100
+
+    Annot: save some unneeded copy() calls
+
+ poppler/Annot.cc | 30 ++++++++++++++----------------
+ poppler/Annot.h  |  6 +++---
+ 2 files changed, 17 insertions(+), 19 deletions(-)
+
+commit c33a0e82f8df11f7a5a0f7d0e0020c485b9142f0
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Feb 28 17:33:40 2019 +0100
+
+    Update (C) of previous commit
+
+ poppler/FileSpec.h | 2 +-
+ poppler/Stream.h   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 4402e335d6a907c3eb73708a6cd50061625d431f
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 10 10:00:32 2019 +0100
+
+    Add new util: pdfattach
+
+ poppler/Catalog.cc   |  81 +++++++++++++++++++++++++++++++++++++
+ poppler/Catalog.h    |   8 ++++
+ poppler/Dict.cc      |  13 ++++++
+ poppler/Dict.h       |   1 +
+ poppler/FileSpec.cc  |  28 +++++++++++++
+ poppler/FileSpec.h   |   2 +
+ poppler/PDFDoc.cc    |   6 +++
+ poppler/Stream.cc    |   1 +
+ poppler/Stream.h     |   5 +++
+ utils/CMakeLists.txt |   9 +++++
+ utils/pdfattach.1    |  60 +++++++++++++++++++++++++++
+ utils/pdfattach.cc   | 112
+ +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 12 files changed, 326 insertions(+)
+
+commit f4136a6353162db249f63ddb0f20611622ab61b4
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 19:43:22 2019 +0100
+
+    ImageStream::getLine: fix crash on broken files
+
+    Fixes #728
+
+ poppler/Stream.cc | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 49ecbd5933e5b182ffc211d281cdfdc499d0357e
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 15:44:01 2019 +0100
+
+    Change Dict::lookupNF return a const &
+
+    Saves some copy()
+
+ poppler/Annot.cc                    | 46
+ ++++++++++++++++++-------------------
+ poppler/Catalog.cc                  |  6 ++---
+ poppler/Dict.cc                     |  9 ++++----
+ poppler/Dict.h                      |  2 +-
+ poppler/FileSpec.cc                 |  4 ++--
+ poppler/FontInfo.cc                 |  2 +-
+ poppler/Form.cc                     |  4 ++--
+ poppler/Gfx.cc                      | 17 +++++++-------
+ poppler/GfxFont.cc                  |  8 +++----
+ poppler/Link.cc                     |  6 ++---
+ poppler/Movie.cc                    |  4 ++--
+ poppler/Object.h                    |  4 ++--
+ poppler/OptionalContent.cc          |  2 +-
+ poppler/Outline.cc                  | 10 ++++----
+ poppler/PDFDoc.cc                   | 10 ++++----
+ poppler/PSOutputDev.cc              |  2 +-
+ poppler/Page.cc                     | 24 +++++++++----------
+ poppler/Stream.cc                   |  4 ++--
+ poppler/StructElement.cc            | 12 +++++-----
+ poppler/StructTreeRoot.cc           |  2 +-
+ poppler/XRef.cc                     | 21 ++++++++---------
+ qt5/src/poppler-annotation-helper.h |  4 ++--
+ utils/pdfunite.cc                   |  8 +++----
+ 23 files changed, 105 insertions(+), 106 deletions(-)
+
+commit 099a09c57224a8072d1591c193815e6434178f25
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 15:58:42 2019 +0100
+
+    pdf-fullrewrite: Save copy() calls
+
+ test/pdf-fullrewrite.cc | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+commit 1005f8ab69ef539bc46ad3fd4d7e610de0204239
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 15:56:23 2019 +0100
+
+    StructTreeRoot::parseNumberTreeNode: Save copy() call
+
+ poppler/StructTreeRoot.cc | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+commit 6b099768fad76d06a7351fc2a446859cfce983fb
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 15:54:30 2019 +0100
+
+    StructElement::parseChild: Save copy() call
+
+ poppler/StructElement.cc | 4 ++--
+ poppler/StructElement.h  | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+commit 2c26b40b8fd82f813c7a8f115ecfa12096452849
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 15:52:51 2019 +0100
+
+    OptionalContent: Save unneeded copy() calls
+
+ poppler/OptionalContent.cc | 18 +++++++++---------
+ poppler/OptionalContent.h  |  2 +-
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+commit b7de46a75644d9e7289c7ec1972ccc6c4eb5afa5
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 15:49:47 2019 +0100
+
+    Object::print: Save unneded copy() calls
+
+ poppler/Object.cc | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+commit 8b8c9ea6eb89bc6b6a0fb0d479e58ba55345e574
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 15:48:54 2019 +0100
+
+    LinkDest::LinkDest: Save unneeded copy() call
+
+ poppler/Link.cc | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+commit 8579a7b95b6658d1e1a905a8e0ec938f42b8b8f0
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 15:48:38 2019 +0100
+
+    GfxICCBasedColorSpace::parse: Save unneeded copy() call
+
+ poppler/GfxState.cc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 4b00c90dcfb2283d872c0dc07d7a54ebd490aaf8
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 15:14:19 2019 +0100
+
+    GfxFontDict::hashFontObject1: Remove unnecessary copy calls
+
+ poppler/GfxFont.cc | 7 +++----
+ poppler/GfxFont.h  | 4 ++--
+ 2 files changed, 5 insertions(+), 6 deletions(-)
+
+commit 063eda5fae00bfb62f04941dc0657596f67683db
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 14:59:46 2019 +0100
+
+    OptionalContent: Remove some unnecessary copy()
+
+ poppler/OptionalContent.cc | 8 ++++----
+ poppler/OptionalContent.h  | 4 ++--
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+commit 32c7d7437974a8b675b9e4913de9d35a100888ea
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 14:57:03 2019 +0100
+
+    FontInfoScanner::scanFonts: remove unnecessary Object::copy
+
+ poppler/FontInfo.cc | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+commit 597e26e96d2a1449aea360e2cf6ffcbf4b8f5b1d
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 27 13:56:23 2019 +0100
+
+    Make Annot::getNF and Dict::getNF return const & instead of copy
+
+    Lots of users can deal with a const & directly, so it saves us some
+    copying. For the ones that can't move the copy to the caller side.
+
+    Some of copy() on the caller side can be easily removed, that
+    will come
+    on next commits
+
+ glib/poppler-document.cc      |  4 ++--
+ poppler/Annot.cc              |  6 +++---
+ poppler/Array.cc              | 11 ++++++-----
+ poppler/Array.h               |  4 ++--
+ poppler/Catalog.cc            |  8 ++++----
+ poppler/Dict.h                |  4 ++--
+ poppler/FontInfo.cc           |  2 +-
+ poppler/Form.cc               |  6 +++---
+ poppler/Function.cc           |  2 +-
+ poppler/Gfx.cc                |  4 ++--
+ poppler/GfxFont.cc            |  6 +++---
+ poppler/GfxState.cc           |  4 ++--
+ poppler/Link.cc               |  8 ++++----
+ poppler/Object.cc             |  4 ++--
+ poppler/Object.h              |  8 ++++----
+ poppler/OptionalContent.cc    | 24 ++++++++++++------------
+ poppler/PDFDoc.cc             | 24 ++++++++++++------------
+ poppler/PSOutputDev.cc        |  8 ++++----
+ poppler/Page.cc               |  2 +-
+ poppler/StructElement.cc      |  4 ++--
+ poppler/StructTreeRoot.cc     |  8 ++++----
+ poppler/XRef.cc               |  4 ++--
+ qt5/src/poppler-optcontent.cc |  6 +++---
+ test/pdf-fullrewrite.cc       |  8 ++++----
+ utils/pdfunite.cc             | 20 ++++++++++----------
+ 25 files changed, 95 insertions(+), 94 deletions(-)
+
+commit 0a4e86e804b784b497407cc9e82cb109ed19edbf
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Tue Feb 19 23:06:20 2019 +0100
+
+    Update (C) of previous commits
+
+ poppler/Parser.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 69d86f90e30785a0db76d3898914de4c0782b947
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Tue Feb 19 16:18:48 2019 +0100
+
+    TextOutputDev: Fix assert in broken file
+
+    oss-fuzz/13203
+
+ poppler/TextOutputDev.cc | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+commit b0a3356f675e76cf26e6e1ac626a32f7b081da8d
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 17 00:54:23 2019 +0100
+
+    Remove the "long" Object objRef constructor
+
+    Did analyze the assembler generated by the more verbose option in
+    Parser.cc that is a hot path and the assembler was the same
+
+ poppler/Object.h               | 2 --
+ poppler/PDFDoc.cc              | 5 ++++-
+ poppler/Parser.cc              | 5 ++++-
+ qt5/tests/check_optcontent.cpp | 4 ++--
+ utils/pdfunite.cc              | 8 ++++----
+ 5 files changed, 14 insertions(+), 10 deletions(-)
+
+commit 60b663236547efe8b3d87e0149050056ad9f0f60
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Feb 13 20:26:07 2019 +0100
+
+    CI Use kdeorg/android-sdk instead of apol/asdk:clang
+
+    it's a bit more official looking
+
+ .gitlab-ci.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit cc7a18307d363c687221a49cee3e0b6e22ff390f
+Author: Masamichi Hosoda <trueroad@trueroad.jp>
+Date:   Tue Feb 12 21:16:42 2019 +0900
+
+    cpp: tests: Add showing version information to poppler-dump
+
+ cpp/tests/poppler-dump.cpp | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+commit 258a25fc02976db194e3eb1e383921a328c72a94
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 10 23:52:13 2019 +0100
+
+    gbasename: Include stdlib for free
+
+    fixes macos build
+
+ goo/gbasename.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit d14a96210f5def63a817c9a2c6d9e971c7272717
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 10 23:51:01 2019 +0100
+
+    Update (C)
+
+ goo/gbasename.cc      | 2 +-
+ utils/InMemoryFile.cc | 2 +-
+ utils/InMemoryFile.h  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+commit e4b72ca0694d86915676a47642fa3c319f8b936b
+Author:  <greg@midgaarde.localdomain>
+Date:   Sun Feb 10 16:25:35 2019 -0500
+
+    tidyup: #if to #ifdef in HAVE_IN_MEMORY_FILE_FOPENCOOKIE as per aacid
+
+ utils/InMemoryFile.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 7b9b3a924d6b63e25e6e6157be5c5e471c43e406
+Author:  <greg@midgaarde.localdomain>
+Date:   Sun Feb 10 16:25:18 2019 -0500
+
+    MSVC/Mac build fix: Hide the private methods in InMemoryFile behind
+    a HAVE_IN_MEMORY_FILE_FOPENCOOKIE guard. These use datatypes like
+    off64_t which don't seem to port to MSVC/Mac.
+
+ utils/InMemoryFile.cc | 2 ++
+ utils/InMemoryFile.h  | 2 ++
+ 2 files changed, 4 insertions(+)
+
+commit 2d1c8327c936600deca28a15230804a448e3f8a2
+Author:  <greg@midgaarde.localdomain>
+Date:   Sun Feb 10 16:24:29 2019 -0500
+
+    MSVC build fix: gbasename: basename()/libgen.h don't exist in
+    MSVC-land. Instead, use _splitpath_s.
+
+ goo/gbasename.cc | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+commit 0e7b76ef87378e924e9f715bfe4ff50b8af4a709
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 10 18:02:11 2019 +0100
+
+    NameTree: remove undefined function
+
+ poppler/Catalog.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit e65dfd791447225c9477f973cbc172b269164af9
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 10 18:01:25 2019 +0100
+
+    NameTree: Remove unused member
+
+ poppler/Catalog.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit ae62db7d22c1dbd3b958ec571337d34c9fc7be7b
+Author: Masamichi Hosoda <trueroad@trueroad.jp>
+Date:   Sun Feb 10 23:27:25 2019 +0900
+
+    cpp: docs: Add description of header version macro
+
+    This commit adds description of header version macro.
+    POPPLER_VERSION
+    POPPLER_VERSION_MAJOR
+    POPPLER_VERSION_MINOR
+    POPPLER_VERSION_MICRO
+
+ cpp/poppler-version.cpp | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+commit dbc49f4805eff0ca9f200feebd433ab73b12ba73
+Author: Masamichi Hosoda <trueroad@trueroad.jp>
+Date:   Sun Feb 10 22:04:45 2019 +0900
+
+    cpp: docs: Add header file information
+
+    This commit adds header files for the document.
+    It generates header file information
+    including dependency graphs and so on.
+
+ cpp/poppler-destination.cpp     | 3 +++
+ cpp/poppler-document.cpp        | 3 +++
+ cpp/poppler-embedded-file.cpp   | 3 +++
+ cpp/poppler-font.cpp            | 3 +++
+ cpp/poppler-global.cpp          | 3 +++
+ cpp/poppler-image.cpp           | 3 +++
+ cpp/poppler-page-renderer.cpp   | 3 +++
+ cpp/poppler-page-transition.cpp | 3 +++
+ cpp/poppler-page.cpp            | 3 +++
+ cpp/poppler-rectangle.cpp       | 3 +++
+ cpp/poppler-toc.cpp             | 3 +++
+ cpp/poppler-version.cpp         | 6 ++++++
+ 12 files changed, 39 insertions(+)
+
+commit 9802b5fc05817a9a4db6a65b22411068767fb681
+Author: Masamichi Hosoda <trueroad@trueroad.jp>
+Date:   Sun Feb 10 21:22:50 2019 +0900
+
+    cpp: docs: Fix doc generating from poppler-version.h.in
+
+    Doxygen generated document did not contain
+    `poppler::version_string()`, `poppler::version_major()`,
+    `poppler::version_minor()`, and `poppler::version_micro()`.
+    These descriptions are written in `poppler-version.h.in`
+    in source files and doxygen could not parse `poppler-version.h.in`
+    because its extension is not mapped to any languages.
+
+    This commit adds `*.in` to C++ in extension mapping.
+    As a result, doxygen parses `poppler-version.h.in` as C++ file.
+    So generated document becomes to contain
+    `poppler::version_string()` etc.
+
+ cpp/Doxyfile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit e5fee74cbb924bb6758fa7697c66571e50ec2f7d
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 10 16:52:11 2019 +0100
+
+    Make the Object Ref constructor explicit
+
+ poppler/Object.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 4d0cbca6a9ebf92f4947522f56cf9361d4b5314e
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 10 16:46:56 2019 +0100
+
+    Add an XRef::fetch variant that takes a const Ref
+
+    makes the code more compact and easier to understand
+
+ glib/poppler-action.cc |  2 +-
+ poppler/FontInfo.cc    |  4 ++--
+ poppler/Gfx.cc         |  4 ++--
+ poppler/Object.cc      |  4 ++--
+ poppler/PDFDoc.cc      | 18 +++++++++---------
+ poppler/XRef.cc        |  9 +++++++--
+ poppler/XRef.h         |  3 ++-
+ utils/pdfunite.cc      |  2 +-
+ 8 files changed, 26 insertions(+), 20 deletions(-)
+
+commit fc555c756becd50d75d87b820b695363030d9ab9
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 10 16:28:28 2019 +0100
+
+    Object: Add constructor that takes a const Ref
+
+    makes it easier to not have to unbox the Ref for no reason
+
+ poppler/Annot.cc            | 12 ++++++------
+ poppler/Form.cc             |  2 +-
+ poppler/GfxFont.cc          |  6 +++---
+ poppler/Object.h            |  4 +++-
+ poppler/PDFDoc.cc           |  2 +-
+ poppler/PSOutputDev.cc      |  4 ++--
+ poppler/Page.cc             | 12 ++++++------
+ poppler/XRef.cc             |  4 ++--
+ qt5/src/poppler-document.cc |  4 ++--
+ utils/pdfunite.cc           |  4 ++--
+ 10 files changed, 28 insertions(+), 26 deletions(-)
+
+commit 5f6ff67b0e1dc075d737fc840642c292329dcd08
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 10 15:32:26 2019 +0100
+
+    pdftohtml: Add -dataurls to man page
+
+ utils/pdftohtml.1 | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 7b8dbc0a4dc8e0738658b8e4fe7c44adad15af24
+Author: Greg Knight <lyngvi@gmail.com>
+Date:   Fri Nov 23 22:30:12 2018 -0500
+
+    pdftohtml: singleHtml and stout are not mutually exclusive. with
+    -dataurls is actually quite reasonable.
+
+ utils/pdftohtml.cc | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit 91ab53fa635e9ea964f10e9a6681d04d7185c732
+Author: Greg Knight <lyngvi@gmail.com>
+Date:   Fri Nov 23 19:53:38 2018 -0500
+
+    pdftohtml: add support for dataUrls argument
+
+    eliminate the 'extension' field used to regenerate background images;
+    replace with a list of background images
+
+ utils/HtmlOutputDev.cc | 67
+ ++++++++++++++++++++++++++------------------------
+ utils/HtmlOutputDev.h  | 15 ++++++-----
+ utils/pdftohtml.cc     | 46 ++++++++++++++++++++++++----------
+ 3 files changed, 77 insertions(+), 51 deletions(-)
+
+commit 44da4d785cffeb5d4bbb1460479add6ce01edea2
+Author: Greg Knight <lyngvi@gmail.com>
+Date:   Sun Feb 10 10:31:36 2019 +0100
+
+    Introduce gbase64
+
+ CMakeLists.txt |  1 +
+ goo/gbase64.cc | 50 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ goo/gbase64.h  | 28 ++++++++++++++++++++++++++++
+ 3 files changed, 79 insertions(+)
+
+commit 2ba81611e9ccdcb49275ee247308bd0dcba3e64d
+Author: Greg Knight <lyngvi@gmail.com>
+Date:   Sun Feb 10 10:28:26 2019 +0100
+
+    Introduce gbasename
+
+ CMakeLists.txt         |  1 +
+ goo/gbasename.cc       | 51
+ ++++++++++++++++++++++++++++++++++++++++++++++++++
+ goo/gbasename.h        | 22 ++++++++++++++++++++++
+ utils/HtmlOutputDev.cc | 47
+ ++++++++++++++++------------------------------
+ utils/HtmlOutputDev.h  |  7 -------
+ utils/pdfsig.cc        |  6 ++----
+ 6 files changed, 92 insertions(+), 42 deletions(-)
+
+commit 7f4da59665969f624c18a1ba3e1f1ac1ca3478b1
+Author: Greg Knight <lyngvi@gmail.com>
+Date:   Fri Nov 23 19:37:37 2018 -0500
+
+    pdftohtml data urls: adding InMemoryFile utility class
+
+ utils/CMakeLists.txt  |  1 +
+ utils/InMemoryFile.cc | 75
+ +++++++++++++++++++++++++++++++++++++++++++++++++++
+ utils/InMemoryFile.h  | 51 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 127 insertions(+)
+
+commit 8d2a3e533024b01c8ec7fe3170d29877bbf4af5e
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Feb 10 10:03:05 2019 +0100
+
+    constify saveAs GooStrings
+
+ poppler/PDFDoc.cc | 6 +++---
+ poppler/PDFDoc.h  | 8 ++++----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
 commit c0c89223c1724815e8bae78ebac72bb3a4873a68
 Author: Albert Astals Cid <aacid@kde.org>
 Date:   Thu Feb 7 19:34:31 2019 +0100

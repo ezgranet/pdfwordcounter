@@ -8,6 +8,8 @@
 // Copyright (C) 2009 Pino Toscano <pino@kde.org>
 // Copyright (C) 2012 Adrian Johnson <ajohnson@redneon.com>
 // Copyright (C) 2013 Thomas Freitag <Thomas.Freitag@alfa.de>
+// Copyright (C) 2019 Oliver Sander <oliver.sander@tu-dresden.de>
+// Copyright (C) 2019 Adam Reichold <adam.reichold@t-online.de>
 //
 // To see a description of the changes please see the Changelog file that
 // came with your tarball or type make ChangeLog if you are building from git
@@ -26,7 +28,8 @@
 #define FONT_INFO_H
 
 #include "Object.h"
-#include "goo/GooList.h"
+
+#include <unordered_set>
 
 class GfxFont;
 class PDFDoc;
@@ -89,16 +92,16 @@ public:
   // Destructor.
   ~FontInfoScanner();
 
-  GooList *scan(int nPages);
+  std::vector<FontInfo*> *scan(int nPages);
 
 private:
 
   PDFDoc *doc;
   int currentPage;
-  std::set<int> fonts;
-  std::set<int> visitedObjects;
+  std::unordered_set<int> fonts;
+  std::unordered_set<int> visitedObjects;
 
-  void scanFonts(XRef *xrefA, Dict *resDict, GooList *fontsList);
+  void scanFonts(XRef *xrefA, Dict *resDict, std::vector<FontInfo*> *fontsList);
 };
 
 #endif

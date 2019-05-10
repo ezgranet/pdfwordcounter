@@ -1,8 +1,8 @@
-prefix=/usr/local/Cellar/poppler/0.74.0
-libdir=/usr/local/Cellar/poppler/0.74.0/lib
-includedir=/usr/local/Cellar/poppler/0.74.0/include
+prefix=/usr/local/Cellar/poppler/0.76.1
+libdir=/usr/local/Cellar/poppler/0.76.1/lib
+includedir=/usr/local/Cellar/poppler/0.76.1/include
 
 Name: poppler-cairo
 Description: Cairo backend for Poppler PDF rendering library
-Version: 0.74.0
-Requires: poppler = 0.74.0 cairo >= 1.10.0
+Version: 0.76.1
+Requires: poppler = 0.76.1 cairo >= 1.10.0

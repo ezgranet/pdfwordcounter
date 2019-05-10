@@ -17,9 +17,10 @@
 // Copyright (C) 2008 Hugo Mercier <hmercier31@gmail.com>
 // Copyright (C) 2010, 2011 Carlos Garcia Campos <carlosgc@gnome.org>
 // Copyright (C) 2012 Tobias Koening <tobias.koenig@kdab.com>
-// Copyright (C) 2018 Albert Astals Cid <aacid@kde.org>
+// Copyright (C) 2018, 2019 Albert Astals Cid <aacid@kde.org>
 // Copyright (C) 2018 Klarälvdalens Datakonsult AB, a KDAB Group company, <info@kdab.com>. Work sponsored by the LiMux project of the city of Munich
 // Copyright (C) 2018 Intevation GmbH <intevation@intevation.de>
+// Copyright (C) 2019 Oliver Sander <oliver.sander@tu-dresden.de>
 //
 // To see a description of the changes please see the Changelog file that
 // came with your tarball or type make ChangeLog if you are building from git
@@ -34,7 +35,6 @@
 #include <set>
 
 class GooString;
-class GooList;
 class Array;
 class Dict;
 class Sound;
@@ -85,15 +85,15 @@ public:
 
   // A List of the next actions to execute in order.
   // The list contains pointer to LinkAction objects.
-  const GooList *nextActions() const;
+  const std::vector<LinkAction*> *nextActions() const;
 
   // Sets the next action list. Takes ownership of the actions.
-  void setNextActions(GooList *actions);
+  void setNextActions(std::vector<LinkAction*> *actions);
 
 private:
   static LinkAction *parseAction(const Object *obj, const GooString *baseURI, std::set<int> *seenNextActions);
 
-  GooList *nextActionList;
+  std::vector<LinkAction*> *nextActionList;
 };
 
 //------------------------------------------------------------------------
@@ -310,13 +310,13 @@ public:
   LinkMovie(const Object *obj);
   ~LinkMovie();
 
-  bool isOk() const override { return annotRef.num >= 0 || annotTitle != nullptr; }
+  bool isOk() const override { return hasAnnotRef() || hasAnnotTitle(); }
   LinkActionKind getKind() const override { return actionMovie; }
 
   // a movie action stores either an indirect reference to a movie annotation
   // or the movie annotation title
 
-  bool hasAnnotRef() const { return annotRef.num >= 0; }
+  bool hasAnnotRef() const { return annotRef != Ref::INVALID(); }
   bool hasAnnotTitle() const { return annotTitle != nullptr; }
   const Ref *getAnnotRef() const { return &annotRef; }
   const GooString *getAnnotTitle() const { return annotTitle; }
@@ -360,8 +360,8 @@ public:
   bool hasRenditionObject() const { return renditionObj.isDict(); }
   const Object* getRenditionObject() const { return &renditionObj; }
 
-  bool hasScreenAnnot() const { return screenRef.isRef(); }
-  Ref getScreenAnnot() const { return screenRef.getRef(); }
+  bool hasScreenAnnot() const { return screenRef != Ref::INVALID(); }
+  Ref getScreenAnnot() const { return screenRef; }
 
   RenditionOperation getOperation() const { return operation; }
 
@@ -371,7 +371,7 @@ public:
 
 private:
 
-  Object screenRef;
+  Ref screenRef;
   Object renditionObj;
   RenditionOperation operation;
 
@@ -452,14 +452,14 @@ public:
     StateList(const StateList &) = delete;
     StateList& operator=(const StateList &) = delete;
     State st;
-    GooList *list;
+    std::vector<Ref*> *list;
   };
 
-  const GooList *getStateList() const { return stateList; }
+  const std::vector<StateList*> *getStateList() const { return stateList; }
   bool getPreserveRB() const { return preserveRB; }
 
 private:
-  GooList *stateList;
+  std::vector<StateList*> *stateList;
   bool preserveRB;
 };
 

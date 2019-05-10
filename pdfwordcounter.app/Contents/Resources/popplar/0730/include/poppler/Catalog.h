@@ -14,7 +14,7 @@
 // under GPL version 2 or later
 //
 // Copyright (C) 2005 Kristian Høgsberg <krh@redhat.com>
-// Copyright (C) 2005, 2007, 2009-2011, 2013, 2017, 2018 Albert Astals Cid <aacid@kde.org>
+// Copyright (C) 2005, 2007, 2009-2011, 2013, 2017-2019 Albert Astals Cid <aacid@kde.org>
 // Copyright (C) 2005 Jonathan Blandford <jrb@redhat.com>
 // Copyright (C) 2005, 2006, 2008 Brad Hards <bradh@frogmouth.net>
 // Copyright (C) 2007 Julien Rebetez <julienr@svn.gnome.org>
@@ -83,7 +83,6 @@ private:
     ~Entry();
     GooString name;
     Object value;
-    void free();
     static int cmpEntry(const void *voidEntry, const void *voidOtherEntry);
     static int cmp(const void *key, const void *entry);
   };
@@ -92,7 +91,6 @@ private:
   void addEntry(Entry *entry);
 
   XRef *xref;
-  Object *root;
   Entry **entries;
   int size, length; // size is the number of entries in
                     // the array of Entry*
@@ -148,7 +146,7 @@ public:
 
   // Find a page, given its object ID.  Returns page number, or 0 if
   // not found.
-  int findPage(int num, int gen);
+  int findPage(const Ref pageRef);
 
   // Find a named destination.  Returns the link destination, or
   // NULL if <name> is not a destination.
@@ -179,6 +177,14 @@ public:
 
   // Get the i'th file embedded (at the Document level) in the document
   FileSpec *embeddedFile(int i);
+
+  // Is there an embedded file with the given name?
+  bool hasEmbeddedFile(const std::string &fileName);
+
+  // Adds and embeddedFile
+  // If there is already an existing embedded file with the given fileName
+  // it gets replaced, if that's not what you want check hasEmbeddedFile first
+  void addEmbeddedFile(GooFile *file, const std::string &fileName);
 
   // Get the number of javascript scripts
   int numJS() { return getJSNameTree()->numEntries(); }

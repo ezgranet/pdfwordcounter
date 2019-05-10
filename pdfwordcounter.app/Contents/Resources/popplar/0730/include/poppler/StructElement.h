@@ -6,7 +6,7 @@
 //
 // Copyright 2013, 2014 Igalia S.L.
 // Copyright 2014 Luigi Scarso <luigi.scarso@gmail.com>
-// Copyright 2014, 2018 Albert Astals Cid <aacid@kde.org>
+// Copyright 2014, 2018, 2019 Albert Astals Cid <aacid@kde.org>
 // Copyright 2018 Adam Reichold <adam.reichold@t-online.de>
 //
 //========================================================================
@@ -155,11 +155,11 @@ public:
   bool isGrouping() const;
 
   inline bool isContent() const { return (type == MCID) || isObjectRef(); }
-  inline bool isObjectRef() const { return (type == OBJR && c->ref.num != -1 && c->ref.gen != -1); }
+  inline bool isObjectRef() const { return (type == OBJR && c->ref != Ref::INVALID()); }
 
   int getMCID() const { return c->mcid; }
   Ref getObjectRef() const { return c->ref; }
-  Ref getParentRef() { return isContent() ? parent->getParentRef() : s->parentRef.getRef(); }
+  Ref getParentRef() { return isContent() ? parent->getParentRef() : s->parentRef; }
   bool hasPageRef() const;
   bool getPageRef(Ref& ref) const;
   StructTreeRoot *getStructTreeRoot() { return treeRoot; }
@@ -253,7 +253,7 @@ private:
   typedef std::vector<StructElement*> ElemPtrArray;
 
   struct StructData {
-    Object       parentRef;
+    Ref         parentRef;
     GooString   *altText;
     GooString   *actualText;
     GooString   *id;
@@ -279,7 +279,7 @@ private:
     };
 
     ContentData(int mcidA): mcid(mcidA) {}
-    ContentData(const Ref r) { ref.num = r.num; ref.gen = r.gen; }
+    ContentData(const Ref r) { ref = r; }
   };
 
   // Common data
@@ -298,7 +298,7 @@ private:
   StructElement(const Ref ref, StructTreeRoot *treeRootA, StructElement *parentA);
 
   void parse(Dict* elementDict);
-  StructElement* parseChild(Object *ref, Object* childObj, std::set<int> &seen);
+  StructElement* parseChild(const Object *ref, Object* childObj, std::set<int> &seen);
   void parseChildren(Dict* element, std::set<int> &seen);
   void parseAttributes(Dict *element, bool keepExisting = false);
 

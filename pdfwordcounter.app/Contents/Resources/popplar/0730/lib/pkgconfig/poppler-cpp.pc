@@ -1,12 +1,12 @@
-prefix=/usr/local/Cellar/poppler/0.74.0
-libdir=/usr/local/Cellar/poppler/0.74.0/lib
-includedir=/usr/local/Cellar/poppler/0.74.0/include
+prefix=/usr/local/Cellar/poppler/0.76.1
+libdir=/usr/local/Cellar/poppler/0.76.1/lib
+includedir=/usr/local/Cellar/poppler/0.76.1/include
 
 Name: poppler-cpp
 Description: cpp backend for Poppler PDF rendering library
-Version: 0.74.0
+Version: 0.76.1
 Requires: 
-Requires.private: poppler = 0.74.0
+Requires.private: poppler = 0.76.1
 
 Libs: -L${libdir} -lpoppler-cpp
 Cflags: -I${includedir}/poppler/cpp

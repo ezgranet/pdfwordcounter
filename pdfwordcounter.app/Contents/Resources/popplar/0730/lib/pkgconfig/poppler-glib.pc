@@ -1,12 +1,12 @@
-prefix=/usr/local/Cellar/poppler/0.74.0
-libdir=/usr/local/Cellar/poppler/0.74.0/lib
-includedir=/usr/local/Cellar/poppler/0.74.0/include
+prefix=/usr/local/Cellar/poppler/0.76.1
+libdir=/usr/local/Cellar/poppler/0.76.1/lib
+includedir=/usr/local/Cellar/poppler/0.76.1/include
 
 Name: poppler-glib
 Description: GLib wrapper for poppler
-Version: 0.74.0
+Version: 0.76.1
 Requires: glib-2.0 >= 2.41 gobject-2.0 >= 2.41 cairo >= 1.10.0
-Requires.private: poppler = 0.74.0
+Requires.private: poppler = 0.76.1
 
 Libs: -L${libdir} -lpoppler-glib
 Cflags: -I${includedir}/poppler/glib

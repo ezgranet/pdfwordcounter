@@ -15,7 +15,7 @@
 //
 // Copyright (C) 2007 Julien Rebetez <julienr@svn.gnome.org>
 // Copyright (C) 2008 Kees Cook <kees@outflux.net>
-// Copyright (C) 2008, 2010, 2017, 2018 Albert Astals Cid <aacid@kde.org>
+// Copyright (C) 2008, 2010, 2017-2019 Albert Astals Cid <aacid@kde.org>
 // Copyright (C) 2009 Jakub Wilk <jwilk@jwilk.net>
 // Copyright (C) 2012 Fabio D'Urso <fabiodurso@hotmail.it>
 // Copyright (C) 2013 Thomas Freitag <Thomas.Freitag@alfa.de>
@@ -82,10 +82,16 @@ class Stream;
 struct Ref {
   int num;			// object number
   int gen;			// generation number
+
+  static constexpr Ref INVALID() { return {-1, -1}; };
 };
 
 inline bool operator== (const Ref lhs, const Ref rhs) noexcept {
   return lhs.num == rhs.num && lhs.gen == rhs.gen;
+}
+
+inline bool operator!= (const Ref lhs, const Ref rhs) noexcept {
+  return lhs.num != rhs.num || lhs.gen != rhs.gen;
 }
 
 inline bool operator< (const Ref lhs, const Ref rhs) noexcept {
@@ -172,8 +178,8 @@ public:
     { assert(dictA); type = objDict; dict = dictA; }
   explicit Object(Stream *streamA)
     { assert(streamA); type = objStream; stream = streamA; }
-  Object(int numA, int genA)
-    { type = objRef; ref.num = numA; ref.gen = genA; }
+  explicit Object(const Ref r)
+    { type = objRef; ref = r; }
 
   template<typename T> Object(T) = delete;
 
@@ -270,7 +276,7 @@ public:
   void arrayAdd(Object &&elem);
   void arrayRemove(int i);
   Object arrayGet(int i, int recursion) const;
-  Object arrayGetNF(int i) const;
+  const Object &arrayGetNF(int i) const;
 
   // Dict accessors.
   int dictGetLength() const;
@@ -280,10 +286,10 @@ public:
   void dictRemove(const char *key);
   bool dictIs(const char *dictType) const;
   Object dictLookup(const char *key, int recursion = 0) const;
-  Object dictLookupNF(const char *key) const;
+  const Object &dictLookupNF(const char *key) const;
   const char *dictGetKey(int i) const;
   Object dictGetVal(int i) const;
-  Object dictGetValNF(int i) const;
+  const Object &dictGetValNF(int i) const;
 
   // Stream accessors.
   bool streamIs(const char *dictType) const;
@@ -338,7 +344,7 @@ inline void Object::arrayRemove(int i)
 inline Object Object::arrayGet(int i, int recursion = 0) const
   { OBJECT_TYPE_CHECK(objArray); return array->get(i, recursion); }
 
-inline Object Object::arrayGetNF(int i) const
+inline const Object &Object::arrayGetNF(int i) const
   { OBJECT_TYPE_CHECK(objArray); return array->getNF(i); }
 
 //------------------------------------------------------------------------
@@ -368,7 +374,7 @@ inline bool Object::isDict(const char *dictType) const
 inline Object Object::dictLookup(const char *key, int recursion) const
   { OBJECT_TYPE_CHECK(objDict); return dict->lookup(key, recursion); }
 
-inline Object Object::dictLookupNF(const char *key) const
+inline const Object &Object::dictLookupNF(const char *key) const
   { OBJECT_TYPE_CHECK(objDict); return dict->lookupNF(key); }
 
 inline const char *Object::dictGetKey(int i) const
@@ -377,7 +383,7 @@ inline const char *Object::dictGetKey(int i) const
 inline Object Object::dictGetVal(int i) const
   { OBJECT_TYPE_CHECK(objDict); return dict->getVal(i); }
 
-inline Object Object::dictGetValNF(int i) const
+inline const Object &Object::dictGetValNF(int i) const
   { OBJECT_TYPE_CHECK(objDict); return dict->getValNF(i); }
 
 //------------------------------------------------------------------------

@@ -21,16 +21,17 @@
 // Copyright (C) 2008 Hugo Mercier <hmercier31@gmail.com>
 // Copyright (C) 2008 Pino Toscano <pino@kde.org>
 // Copyright (C) 2008 Tomas Are Haavet <tomasare@gmail.com>
-// Copyright (C) 2009-2011, 2013, 2016-2018 Albert Astals Cid <aacid@kde.org>
+// Copyright (C) 2009-2011, 2013, 2016-2019 Albert Astals Cid <aacid@kde.org>
 // Copyright (C) 2012, 2013 Fabio D'Urso <fabiodurso@hotmail.it>
 // Copyright (C) 2012, 2015 Tobias Koenig <tokoe@kdab.com>
 // Copyright (C) 2013 Thomas Freitag <Thomas.Freitag@alfa.de>
 // Copyright (C) 2013, 2017 Adrian Johnson <ajohnson@redneon.com>
 // Copyright (C) 2018 Klarälvdalens Datakonsult AB, a KDAB Group company, <info@kdab.com>. Work sponsored by the LiMux project of the city of Munich
 // Copyright (C) 2018 Dileep Sankhla <sankhla.dileep96@gmail.com>
-// Copyright (C) 2018 Tobias Deiminger <haxtibal@posteo.de>
+// Copyright (C) 2018, 2019 Tobias Deiminger <haxtibal@posteo.de>
 // Copyright (C) 2018 Oliver Sander <oliver.sander@tu-dresden.de>
 // Copyright (C) 2018 Adam Reichold <adam.reichold@t-online.de>
+// Copyright (C) 2019 Umang Malik <umang99m@gmail.com>
 //
 // To see a description of the changes please see the Changelog file that
 // came with your tarball or type make ChangeLog if you are building from git
@@ -446,9 +447,9 @@ public:
   bool referencesStream(Ref targetStreamRef);
 
 private:
-  static bool referencesStream(Object *stateObj, Ref targetStreamRef);
+  static bool referencesStream(const Object *stateObj, Ref targetStreamRef);
   void removeStream(Ref refToStream);
-  void removeStateStreams(Object *state);
+  void removeStateStreams(const Object *state);
 
 protected:
   PDFDoc *doc;
@@ -547,6 +548,7 @@ public:
   void drawCircle(double cx, double cy, double r, bool fill);
   void drawCircleTopLeft(double cx, double cy, double r);
   void drawCircleBottomRight(double cx, double cy, double r);
+  void drawLineEnding(AnnotLineEndingStyle endingStyle, double x, double y, double size, bool fill, const Matrix& m);
   void drawLineEndSquare(double x, double y, double size, bool fill, const Matrix& m);
   void drawLineEndCircle(double x, double y, double size, bool fill, const Matrix& m);
   void drawLineEndDiamond(double x, double y, double size, bool fill, const Matrix& m);
@@ -554,6 +556,7 @@ public:
   void drawLineEndSlash(double x, double y, double size, const Matrix& m);
   void drawFieldBorder(const FormField *field, const AnnotBorder *border, const AnnotAppearanceCharacs *appearCharacs, const PDFRectangle *rect);
   bool drawFormField(const FormField *field, const Form *form, const GfxResources *resources, const GooString *da, const AnnotBorder *border, const AnnotAppearanceCharacs *appearCharacs, const PDFRectangle *rect, const GooString *appearState, XRef *xref, bool *addedDingbatsResource);
+  static double shortenLineSegmentForEnding(AnnotLineEndingStyle endingStyle, double x, double size);
 
   void writeString(const GooString &str);
 
@@ -666,8 +669,8 @@ public:
   // Get the resource dict of the appearance stream
   virtual Object getAppearanceResDict();
 
-  bool match(Ref *refA)
-    { return ref.num == refA->num && ref.gen == refA->gen; }
+  bool match(const Ref *refA) const
+    { return ref == *refA; }
 
   double getXMin();
   double getYMin();
@@ -785,7 +788,7 @@ public:
   AnnotPopup(PDFDoc *docA, Object &&dictObject, const Object *obj);
   ~AnnotPopup();
 
-  Object *getParentNF() { return &parent; }
+  bool hasParent() const { return parentRef != Ref::INVALID(); }
   void setParent(Annot *parentA);
   bool getOpen() const { return open; }
   void setOpen(bool openA);
@@ -793,7 +796,7 @@ public:
 protected:
   void initialize(PDFDoc *docA, Dict *dict);
 
-  Object parent; // Parent
+  Ref parentRef; // Parent
   bool open;   // Open
 };
 
@@ -818,6 +821,7 @@ public:
   double getOpacity() const { return opacity; }
   // getRC
   const GooString *getDate() const { return date.get(); }
+  bool isInReplyTo() const { return inReplyTo != Ref::INVALID(); }
   int getInReplyToID() const { return inReplyTo.num; }
   const GooString *getSubject() const { return subject.get(); }
   AnnotMarkupReplyType getReplyTo() const { return replyTo; }
@@ -1002,6 +1006,8 @@ public:
     intentFreeTextTypeWriter  // FreeTextTypeWriter
   };
 
+  static const double undefinedFontPtSize;
+
   AnnotFreeText(PDFDoc *docA, PDFRectangle *rect, const DefaultAppearance &da);
   AnnotFreeText(PDFDoc *docA, Object &&dictObject, const Object *obj);
   ~AnnotFreeText();
@@ -1103,8 +1109,6 @@ protected:
 
   void initialize(PDFDoc *docA, Dict *dict);
   void generateLineAppearance();
-  static double shortenMainSegmentForEnding(AnnotLineEndingStyle endingStyle, double x, double size);
-  static void drawLineEnding(AnnotLineEndingStyle endingStyle, AnnotAppearanceBuilder& appearBuilder, double x, double y, double size, bool fill, const Matrix& m);
 
   // required
   std::unique_ptr<AnnotCoord> coord1;
@@ -1225,7 +1229,7 @@ public:
   ~AnnotPolygon();
 
   void draw(Gfx *gfx, bool printing) override;
-
+  void generatePolyLineAppearance(AnnotAppearanceBuilder* appearBuilder);
   void setType(AnnotSubtype new_type); // typePolygon or typePolyLine
   void setVertices(AnnotPath *path);
   void setStartEndStyle(AnnotLineEndingStyle start, AnnotLineEndingStyle end);

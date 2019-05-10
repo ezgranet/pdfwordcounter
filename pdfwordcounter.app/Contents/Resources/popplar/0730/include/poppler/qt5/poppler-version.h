@@ -30,10 +30,10 @@
 #undef minor
 #undef major
 
-#define POPPLER_VERSION "0.74.0"
+#define POPPLER_VERSION "0.76.1"
 #define POPPLER_VERSION_MAJOR 0
-#define POPPLER_VERSION_MINOR 74
-#define POPPLER_VERSION_MICRO 0
+#define POPPLER_VERSION_MINOR 76
+#define POPPLER_VERSION_MICRO 1
 
 namespace Poppler
 {

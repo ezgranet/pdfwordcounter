@@ -13,7 +13,7 @@
 // All changes made under the Poppler project to this file are licensed
 // under GPL version 2 or later
 //
-// Copyright (C) 2005, 2008, 2015, 2017, 2018 Albert Astals Cid <aacid@kde.org>
+// Copyright (C) 2005, 2008, 2015, 2017-2019 Albert Astals Cid <aacid@kde.org>
 // Copyright (C) 2006 Takashi Iwai <tiwai@suse.de>
 // Copyright (C) 2006 Kristian Høgsberg <krh@redhat.com>
 // Copyright (C) 2007 Julien Rebetez <julienr@svn.gnome.org>
@@ -213,13 +213,13 @@ public:
   // Get embedded font ID, i.e., a ref for the font file stream.
   // Returns false if there is no embedded font.
   bool getEmbeddedFontID(Ref *embID) const
-    { *embID = embFontID; return embFontID.num >= 0; }
+    { *embID = embFontID; return embFontID != Ref::INVALID(); }
 
   // Invalidate an embedded font
   // Returns false if there is no embedded font.
   bool invalidateEmbeddedFont() {
-    if (embFontID.num >= 0) {
-      embFontID.num = -1;
+    if (embFontID != Ref::INVALID()) {
+      embFontID = Ref::INVALID();
       return true;
     }
     return false;
@@ -456,7 +456,7 @@ public:
 private:
 
   int hashFontObject(Object *obj);
-  void hashFontObject1(Object *obj, FNVHash *h);
+  void hashFontObject1(const Object *obj, FNVHash *h);
 
   GfxFont **fonts;		// list of fonts
   int numFonts;			// number of fonts

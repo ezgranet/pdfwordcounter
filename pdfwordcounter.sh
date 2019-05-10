@@ -1,4 +1,5 @@
 #!/bin/bash
+python copy_dylibs.py
 if [ $# -eq 0 ]
   then
     echo "Either drag a PDF to the window, or click File-> Open"
