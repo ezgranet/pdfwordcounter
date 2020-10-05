@@ -4,7 +4,7 @@
 [`pdfwordcounter`](https://github.com/ezgranet/pdfwordcounter) is a very minimal `macOS` app for counting words in a PDF. That is all.
 
 
-It's useful for all those situations where word counts are needed, and not easily obtainable from PDF files.  If the PDF does not have readable text, I recommend you use the lightweight application [`ocrmypdfmac` by David Pinney](https://github.com/dpinney/ocrmypdfmac), which can quickly and freely make the PDF searchable. 
+It's useful for all those situations where word counts are needed, and not easily obtainable from PDF files.  If the PDF does not have searchable text, I recommend you use the lightweight application [`ocrmypdfmac` by David Pinney](https://github.com/dpinney/ocrmypdfmac), which can quickly and freely make the PDF ready to use with `pdfwordcounter`. 
 
 
 I created this because I was quite annoyed with having to deal with PDF word counting for my MPhil disssertation, and it was easier to make a wrapper for the command line prompts.  Nothing here is remotely original, but it does make an annoying process slightly more pleasant.  [Clicking on this sentence will take you to the latest release of the app.](https://github.com/ezgranet/pdfwordcounter/releases/)
